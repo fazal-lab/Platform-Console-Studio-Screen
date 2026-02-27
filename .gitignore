@@ -1,0 +1,43 @@
+# ===========================
+# Python / Django
+# ===========================
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+*.egg-info/
+dist/
+build/
+*.egg
+venv/
+.env
+.env.*
+db.sqlite3
+media/
+*.log
+
+# ===========================
+# Node.js / React / Vite
+# ===========================
+node_modules/
+dist/
+.cache/
+.parcel-cache/
+*.local
+
+# ===========================
+# IDE / OS
+# ===========================
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+Thumbs.db
+.DS_Store
+
+# ===========================
+# Exclude old/unused directories
+# ===========================
+Xigi_platform/
+console_backend/

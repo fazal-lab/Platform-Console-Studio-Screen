@@ -1,0 +1,232 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>CMS-Agnostic Integration Architecture Proposal</title>
+<style>
+@media print {
+    body { margin: 0; padding: 20px; }
+}
+body {
+    font-family: 'Segoe UI', Arial, sans-serif;
+    line-height: 1.6;
+    max-width: 900px;
+    margin: 0 auto;
+    padding: 40px;
+    color: #333;
+    background: white;
+}
+h1 { color: #1a1a2e; border-bottom: 3px solid #4a90d9; padding-bottom: 10px; font-size: 28px; }
+h2 { color: #16213e; margin-top: 30px; border-bottom: 1px solid #ddd; padding-bottom: 5px; font-size: 20px; }
+h3 { color: #0f3460; font-size: 16px; }
+table { border-collapse: collapse; width: 100%; margin: 20px 0; }
+th, td { border: 1px solid #ddd; padding: 12px; text-align: left; }
+th { background-color: #4a90d9; color: white; }
+tr:nth-child(even) { background-color: #f9f9f9; }
+code { background-color: #f4f4f4; padding: 2px 6px; border-radius: 3px; font-family: Consolas, monospace; }
+pre { background-color: #2d2d2d; color: #f8f8f2; padding: 15px; border-radius: 5px; overflow-x: auto; white-space: pre-wrap; }
+blockquote { border-left: 4px solid #4a90d9; margin: 20px 0; padding: 10px 20px; background-color: #f0f7ff; font-style: italic; }
+ul { margin: 10px 0; }
+li { margin: 5px 0; }
+hr { border: none; border-top: 1px solid #ddd; margin: 30px 0; }
+.emoji { font-size: 1.2em; }
+</style>
+</head>
+<body>
+
+<h1>📄 Proposal: CMS-Agnostic Integration Architecture for Xigi Platform</h1>
+
+<h2>1. Background &amp; Problem Statement</h2>
+<p>Xigi Platform integrates with partner LED screens to deliver and manage ad campaigns. Currently, different partners use <strong>different CMS software</strong> such as:</p>
+<ul>
+    <li>VNNOX (Novastar)</li>
+    <li>Colorlight CMS</li>
+    <li>Linsn CMS</li>
+    <li>Other proprietary or manual CMS systems</li>
+</ul>
+
+<p>Each CMS has:</p>
+<ul>
+    <li>Different APIs</li>
+    <li>Different capabilities</li>
+    <li>Different integration limitations</li>
+</ul>
+
+<h3>Problem:</h3>
+<p>If Xigi integrates <strong>directly with one CMS</strong>, the platform will:</p>
+<ul>
+    <li>Become tightly coupled to that CMS</li>
+    <li>Face rework for every new partner</li>
+    <li>Scale poorly as partner count increases</li>
+</ul>
+
+<hr>
+
+<h2>2. Objective</h2>
+<p>To design a <strong>single, scalable integration system</strong> that:</p>
+<ul>
+    <li>Supports <strong>multiple CMS vendors</strong></li>
+    <li>Avoids rewriting core logic for each partner</li>
+    <li>Allows onboarding new CMS platforms with minimal effort</li>
+    <li>Keeps Xigi as the <strong>central system of control</strong></li>
+</ul>
+
+<hr>
+
+<h2>3. Proposed Solution: CMS Adapter Architecture</h2>
+<p>We propose building a <strong>CMS-Agnostic Integration Layer</strong> using an <strong>Adapter Pattern</strong>.</p>
+
+<h3>High-level idea:</h3>
+<ul>
+    <li>Xigi defines its <strong>own standard CMS operations</strong></li>
+    <li>Each CMS gets its own <strong>adapter</strong></li>
+    <li>Adapters translate Xigi requests into CMS-specific APIs</li>
+</ul>
+
+<hr>
+
+<h2>4. Architecture Overview</h2>
+
+<h3>Logical Flow:</h3>
+<pre>
+Xigi Core Platform
+   ↓
+Common CMS Interface (Xigi Standard)
+   ↓
+CMS Adapter Layer
+   ↓
+Partner CMS (VNNOX / Others)
+   ↓
+LED Screens
+</pre>
+
+<h3>Key Principle:</h3>
+<blockquote>Xigi never directly depends on any one CMS vendor.</blockquote>
+
+<hr>
+
+<h2>5. Common CMS Interface (Xigi Standard)</h2>
+<p>Xigi will define a <strong>fixed set of CMS operations</strong>, such as:</p>
+<ul>
+    <li>Upload creative (image/video)</li>
+    <li>Create playlist / program</li>
+    <li>Assign screens</li>
+    <li>Schedule or publish content</li>
+    <li>Fetch screen status</li>
+    <li>Monitor playback status</li>
+</ul>
+<p>These operations represent <strong>business intent</strong>, not vendor-specific implementation.</p>
+
+<hr>
+
+<h2>6. CMS Adapters (Vendor-Specific)</h2>
+<p>Each CMS adapter will:</p>
+<ul>
+    <li>Implement the same standard interface</li>
+    <li>Internally call that CMS's APIs</li>
+    <li>Handle authentication, formatting, and constraints</li>
+</ul>
+
+<h3>Example:</h3>
+<table>
+    <tr><th>CMS</th><th>Adapter</th></tr>
+    <tr><td>VNNOX</td><td>VNNOX Adapter</td></tr>
+    <tr><td>Colorlight</td><td>Colorlight Adapter</td></tr>
+    <tr><td>Linsn</td><td>Linsn Adapter</td></tr>
+    <tr><td>Manual CMS</td><td>Manual / Semi-Automated Adapter</td></tr>
+</table>
+<p>This ensures <strong>plug-and-play extensibility</strong>.</p>
+
+<hr>
+
+<h2>7. First Phase Implementation: VNNOX Adapter</h2>
+
+<h3>Why VNNOX first:</h3>
+<ul>
+    <li>Widely used by LED partners</li>
+    <li>Mature CMS with API support</li>
+    <li>Suitable as a reference implementation</li>
+</ul>
+
+<h3>Scope of VNNOX Adapter:</h3>
+<ul>
+    <li>Authentication &amp; token handling</li>
+    <li>Media upload</li>
+    <li>Program / playlist creation</li>
+    <li>Screen assignment</li>
+    <li>Publish &amp; basic monitoring</li>
+</ul>
+<p>Once stable, this adapter will serve as the <strong>baseline</strong> for future CMS adapters.</p>
+
+<hr>
+
+<h2>8. Handling CMS Capability Differences</h2>
+<p>Not all CMS platforms offer the same features.</p>
+
+<p><strong>Strategy:</strong></p>
+<ul>
+    <li>Define <strong>minimum supported capabilities</strong></li>
+    <li>Adapter returns <code>Not Supported</code> for unavailable features</li>
+    <li>Xigi UI adapts based on partner CMS capability</li>
+</ul>
+
+<p>This ensures:</p>
+<ul>
+    <li>Graceful degradation</li>
+    <li>No platform breakage</li>
+    <li>Clear expectations with partners</li>
+</ul>
+
+<hr>
+
+<h2>9. Benefits of This Approach</h2>
+
+<h3>Technical Benefits:</h3>
+<ul>
+    <li>Loose coupling</li>
+    <li>Cleaner architecture</li>
+    <li>Easier maintenance</li>
+    <li>Faster onboarding of new CMS vendors</li>
+</ul>
+
+<h3>Business Benefits:</h3>
+<ul>
+    <li>Partner flexibility</li>
+    <li>Faster expansion</li>
+    <li>Reduced integration cost</li>
+    <li>Future-proof platform</li>
+</ul>
+
+<hr>
+
+<h2>10. Risks &amp; Mitigation</h2>
+<table>
+    <tr><th>Risk</th><th>Mitigation</th></tr>
+    <tr><td>CMS APIs unavailable</td><td>Manual / hybrid adapter</td></tr>
+    <tr><td>API limitations</td><td>Capability-based feature flags</td></tr>
+    <tr><td>Overengineering</td><td>Phase-wise rollout (VNNOX first)</td></tr>
+</table>
+
+<hr>
+
+<h2>11. Phased Rollout Plan</h2>
+<ol>
+    <li>Define common CMS interface</li>
+    <li>Build VNNOX adapter</li>
+    <li>Validate with live partners</li>
+    <li>Stabilize interface</li>
+    <li>Add new CMS adapters as needed</li>
+</ol>
+
+<hr>
+
+<h2>12. Conclusion</h2>
+<p>This approach allows Xigi to act as a <strong>single unified platform</strong>, regardless of the CMS technologies used by partners. Starting with VNNOX ensures fast execution while laying a scalable foundation for the future.</p>
+
+<hr>
+
+<h2>💬 One-line Executive Summary</h2>
+<blockquote>"We'll integrate with multiple CMS platforms using a single standardized interface and CMS-specific adapters, starting with a VNNOX adapter as the first implementation."</blockquote>
+
+</body>
+</html>

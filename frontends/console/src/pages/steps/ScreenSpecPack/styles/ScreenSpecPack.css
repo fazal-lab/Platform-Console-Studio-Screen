@@ -1,0 +1,763 @@
+/* ==========================================================================
+   Screen Spec Pack Styles - Feature Scoped
+   ==========================================================================
+   Matches Xigi Partner Admin Design (Reference Image)
+   ========================================================================== */
+
+/* Main Container */
+.ssp-container {
+  padding: 24px 48px;
+  width: 100%;
+}
+
+.ssp-form-card {
+  background-color: #ffffff;
+  border-radius: 12px;
+  padding: 40px 56px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+  width: 100%;
+  margin: 0 auto;
+}
+
+/* Step Progress - Simple Text Tabs with Underline */
+.ssp-progress {
+  display: flex;
+  gap: 40px;
+  margin-bottom: 32px;
+  border-bottom: 1px solid #e5e7eb;
+  padding-bottom: 0;
+}
+
+.ssp-step {
+  padding: 12px 0;
+  font-size: 14px;
+  font-weight: 500;
+  color: #6b7280;
+  cursor: pointer;
+  border-bottom: 2px solid transparent;
+  margin-bottom: -1px;
+  transition: color 0.2s;
+  white-space: nowrap;
+}
+
+.ssp-step:hover {
+  color: #6B4EE6;
+}
+
+.ssp-step.active {
+  color: #6B4EE6;
+  border-bottom-color: #6B4EE6;
+  font-weight: 600;
+}
+
+.ssp-step.completed {
+  color: #6b7280;
+}
+
+/* Section Title */
+.ssp-section-title {
+  font-size: 15px;
+  font-weight: 600;
+  color: #1f2937;
+  margin-bottom: 24px;
+}
+
+/* Section Subtitle (e.g. "Location & GIS") */
+.ssp-section-subtitle {
+  font-size: 14px;
+  font-weight: 600;
+  color: #374151;
+  margin-bottom: 16px;
+  margin-top: 24px;
+}
+
+/* Form Groups */
+.ssp-group {
+  margin-bottom: 20px;
+}
+
+.ssp-label {
+  display: block;
+  font-size: 13px;
+  font-weight: 500;
+  color: #374151;
+  margin-bottom: 6px;
+}
+
+.ssp-required {
+  color: #EF4444;
+}
+
+/* Form Inputs */
+.ssp-input,
+.ssp-select,
+.ssp-textarea {
+  width: 100%;
+  padding: 10px 14px;
+  border: 1px solid #d1d5db;
+  border-radius: 6px;
+  font-size: 14px;
+  color: #1f2937;
+  background-color: #ffffff;
+  transition: border-color 0.2s, box-shadow 0.2s;
+  color-scheme: light;
+  /* Fixes black spinners in mixed dark-mode environments */
+}
+
+/* Multi-select Dropdown with Chips */
+.ssp-select-multi-wrapper {
+  position: relative;
+  min-height: 42px;
+  border: 1px solid #d1d5db;
+  border-radius: 6px;
+  background-color: #fff;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+  padding: 6px 36px 6px 10px;
+  align-items: center;
+  transition: border-color 0.2s, box-shadow 0.2s;
+}
+
+.ssp-select-multi-wrapper:focus-within {
+  border-color: #6B4EE6;
+  box-shadow: 0 0 0 3px rgba(107, 78, 230, 0.1);
+}
+
+.ssp-multi-chip {
+  background: #f3f4f6;
+  border: 1px solid #e5e7eb;
+  border-radius: 4px;
+  padding: 2px 8px;
+  font-size: 12px;
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  color: #374151;
+}
+
+.ssp-multi-chip-remove {
+  border: none;
+  background: transparent;
+  cursor: pointer;
+  padding: 0;
+  font-size: 14px;
+  color: #6b7280;
+  line-height: 1;
+}
+
+.ssp-multi-chip-remove:hover {
+  color: #ef4444;
+}
+
+.ssp-multi-overlay-select {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  opacity: 0;
+  cursor: pointer;
+}
+
+.ssp-multi-arrow {
+  position: absolute;
+  right: 12px;
+  top: 50%;
+  transform: translateY(-50%);
+  pointer-events: none;
+  color: #6b7280;
+  font-size: 10px;
+}
+
+.ssp-input::placeholder,
+.ssp-textarea::placeholder {
+  color: #9ca3af;
+}
+
+.ssp-input:focus,
+.ssp-select:focus,
+.ssp-textarea:focus {
+  outline: none;
+  border-color: #6B4EE6;
+  box-shadow: 0 0 0 3px rgba(107, 78, 230, 0.1);
+}
+
+.ssp-input[readonly] {
+  background-color: #f9fafb;
+  color: #6b7280;
+}
+
+/* Hidden scrollbar for format container - still scrollable with mouse wheel */
+.ssp-format-scroll::-webkit-scrollbar {
+  display: none;
+}
+
+.ssp-format-scroll {
+  -ms-overflow-style: none;
+  /* IE and Edge */
+  scrollbar-width: none;
+  /* Firefox */
+}
+
+/* Grid Layouts */
+.ssp-row {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 16px;
+  margin-bottom: 20px;
+}
+
+.ssp-row.three-col {
+  grid-template-columns: 1fr 1fr 1fr;
+}
+
+/* Map + Fields Layout (Step 1) */
+.ssp-map-layout {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 32px;
+  align-items: start;
+}
+
+/* Map Container */
+.ssp-map-container {
+  height: 320px;
+  border: 1px solid #e5e7eb;
+  border-radius: 6px;
+  overflow: hidden;
+  position: relative;
+  background-color: #f3f4f6;
+}
+
+.ssp-map-search-overlay {
+  position: absolute;
+  top: 12px;
+  left: 12px;
+  right: 12px;
+  z-index: 1000;
+  /* High z-index to sit on top of map */
+  background: white;
+  padding: 8px 12px;
+  border-radius: 8px;
+  box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  border: 1px solid #e5e7eb;
+}
+
+.ssp-map-search-input {
+  flex: 1;
+  border: none;
+  outline: none;
+  font-size: 14px;
+  color: #374151;
+  background: white;
+  padding: 4px;
+}
+
+.ssp-map-search-input::placeholder {
+  color: #9ca3af;
+}
+
+.ssp-map-search-btn {
+  background: #f3f4f6;
+  border: none;
+  border-radius: 4px;
+  padding: 6px 10px;
+  cursor: pointer;
+  font-size: 14px;
+  transition: background 0.2s;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.ssp-map-search-btn:hover {
+  background: #e5e7eb;
+}
+
+.ssp-map-placeholder {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 100%;
+  color: #6b7280;
+  flex-direction: column;
+  padding-top: 40px;
+}
+
+/* Actions Footer */
+.ssp-actions {
+  display: flex;
+  justify-content: flex-end;
+  gap: 12px;
+  margin-top: 32px;
+  padding-top: 24px;
+  border-top: 1px solid #e5e7eb;
+}
+
+.ssp-btn {
+  padding: 10px 24px;
+  border-radius: 6px;
+  font-size: 14px;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all 0.2s;
+}
+
+.ssp-btn-primary {
+  background-color: #6B4EE6;
+  color: white;
+  border: none;
+}
+
+.ssp-btn-primary:hover {
+  background-color: #5a3ed1;
+}
+
+.ssp-btn-secondary {
+  background-color: transparent;
+  border: 1px solid #d1d5db;
+  color: #374151;
+}
+
+.ssp-btn-secondary:hover {
+  background-color: #f9fafb;
+}
+
+/* Disabled Button State */
+.ssp-btn:disabled {
+  background-color: #e5e7eb;
+  color: #9ca3af;
+  cursor: not-allowed;
+  border-color: transparent;
+}
+
+/* Locked/Disabled Step Tab */
+.ssp-step.locked {
+  color: #d1d5db;
+  cursor: not-allowed;
+  pointer-events: none;
+  /* specific request: hovering not possible */
+}
+
+.ssp-step.locked:hover {
+  color: #d1d5db;
+}
+
+.ssp-btn-outline {
+  background: transparent;
+  color: #6B4EE6;
+  border: 1px solid #6B4EE6;
+}
+
+/* Chip/Tag Containers (for multi-select) */
+.ssp-chip-container {
+  display: flex;
+  gap: 8px;
+  flex-wrap: wrap;
+  margin-top: 8px;
+}
+
+.ssp-chip {
+  background: rgba(107, 78, 230, 0.1);
+  color: #6B4EE6;
+  padding: 6px 12px;
+  border-radius: 16px;
+  font-size: 13px;
+  cursor: pointer;
+  border: 1px solid transparent;
+  transition: all 0.2s;
+}
+
+.ssp-chip:hover {
+  background: rgba(107, 78, 230, 0.15);
+}
+
+.ssp-chip.active {
+  background: #6B4EE6;
+  color: white;
+}
+
+/* Responsive */
+@media (max-width: 900px) {
+  .ssp-map-layout {
+    grid-template-columns: 1fr;
+  }
+
+  .ssp-row,
+  .ssp-row.three-col {
+    grid-template-columns: 1fr;
+  }
+
+  .ssp-progress {
+    flex-wrap: wrap;
+    gap: 16px;
+  }
+}
+
+/* Subtitle styling */
+.ssp-subtitle {
+  font-size: 14px;
+  font-weight: 600;
+  color: #374151;
+  margin: 24px 0 16px 0;
+}
+
+/* Custom Checkbox */
+.ssp-checkbox-wrapper {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  cursor: pointer;
+  user-select: none;
+}
+
+/* Hidden real checkbox but accessible */
+.ssp-checkbox-input {
+  appearance: none;
+  -webkit-appearance: none;
+  width: 20px;
+  height: 20px;
+  border: 2px solid #d1d5db;
+  border-radius: 4px;
+  /* Square with slight round */
+  background: white;
+  cursor: pointer;
+  position: relative;
+  transition: all 0.2s;
+  flex-shrink: 0;
+  margin: 0;
+  display: grid;
+  place-items: center;
+}
+
+.ssp-checkbox-input:checked {
+  background-color: #6B4EE6;
+  border-color: #6B4EE6;
+}
+
+.ssp-checkbox-input:checked::after {
+  content: '✓';
+  color: white;
+  font-size: 14px;
+  font-weight: bold;
+}
+
+.ssp-checkbox-input:focus {
+  box-shadow: 0 0 0 3px rgba(107, 78, 230, 0.1);
+  border-color: #6B4EE6;
+}
+
+.ssp-checkbox-label {
+  font-size: 14px;
+  font-weight: 500;
+  color: #374151;
+}
+
+/* Custom Dropdown Popup (Dark & Light) */
+.ssp-dropdown-list {
+  position: absolute;
+  top: 100%;
+  left: 0;
+  right: 0;
+  z-index: 1000;
+  margin-top: 4px;
+  background-color: #ffffff;
+  border-radius: 6px;
+  box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+  max-height: 250px;
+  overflow-y: auto;
+  border: 1px solid #e5e7eb;
+}
+
+/* Dark Theme (Matches Categories image) */
+.ssp-dropdown-dark {
+  background-color: #374151 !important;
+  /* Dark Gray */
+  border-color: #1f2937 !important;
+}
+
+.ssp-dropdown-dark .ssp-dropdown-item {
+  color: #ffffff !important;
+  padding: 10px 14px;
+  font-size: 14px;
+  cursor: pointer;
+  transition: background-color 0.2s;
+}
+
+.ssp-dropdown-dark .ssp-dropdown-item:hover {
+  background-color: #4b5563 !important;
+}
+
+/* Light Theme (Matches Max File image) */
+.ssp-dropdown-light {
+  background-color: #ffffff !important;
+}
+
+.ssp-dropdown-light .ssp-dropdown-item {
+  color: #1f2937 !important;
+  padding: 10px 14px;
+  font-size: 14px;
+  cursor: pointer;
+  transition: background-color 0.2s, color 0.2s;
+}
+
+.ssp-dropdown-light .ssp-dropdown-item:hover {
+  background-color: #2563eb !important;
+  color: #ffffff !important;
+}
+
+.ssp-dropdown-item.selected {
+  background-color: #6B4EE6 !important;
+  color: white !important;
+}
+
+.ssp-dropdown-custom-btn {
+  border-top: 1px solid #e5e7eb;
+  padding: 10px 14px;
+  color: #2563eb;
+  font-weight: 600;
+  font-size: 13px;
+  cursor: pointer;
+  background: #fff;
+  transition: background-color 0.2s;
+}
+
+.ssp-dropdown-custom-btn:hover {
+  background: #f3f4f6;
+}
+
+/* White Checkbox Styling */
+.ssp-white-checkbox {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  cursor: pointer;
+  font-size: 13px;
+  font-weight: 500;
+  color: #374151;
+  position: relative;
+  padding-left: 26px;
+}
+
+.ssp-white-checkbox input[type="checkbox"] {
+  position: absolute;
+  opacity: 0;
+  cursor: pointer;
+  height: 0;
+  width: 0;
+}
+
+.ssp-white-checkbox .ssp-checkmark {
+  position: absolute;
+  left: 0;
+  top: 50%;
+  transform: translateY(-50%);
+  height: 18px;
+  width: 18px;
+  background-color: #ffffff;
+  border: 1.5px solid #d1d5db;
+  border-radius: 4px;
+  transition: all 0.15s ease;
+}
+
+.ssp-white-checkbox:hover .ssp-checkmark {
+  border-color: #6B4EE6;
+}
+
+.ssp-white-checkbox input:checked~.ssp-checkmark {
+  background-color: #6B4EE6;
+  border-color: #6B4EE6;
+}
+
+.ssp-white-checkbox .ssp-checkmark:after {
+  content: "";
+  position: absolute;
+  display: none;
+}
+
+.ssp-white-checkbox input:checked~.ssp-checkmark:after {
+  display: block;
+}
+
+.ssp-white-checkbox .ssp-checkmark:after {
+  left: 5px;
+  top: 2px;
+  width: 5px;
+  height: 9px;
+  border: solid white;
+  border-width: 0 2px 2px 0;
+  transform: rotate(45deg);
+}
+
+/* ==========================================================================
+   Info Button Tooltip Styles
+   ========================================================================== */
+
+.ssp-info-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 16px;
+  height: 16px;
+  margin-left: 6px;
+  background: linear-gradient(135deg, #6B4EE6 0%, #8B6EF6 100%);
+  color: #fff;
+  border-radius: 50%;
+  font-size: 10px;
+  font-weight: 700;
+  cursor: help;
+  position: relative;
+  font-family: Georgia, serif;
+  font-style: italic;
+  transition: all 0.2s ease;
+  flex-shrink: 0;
+}
+
+.ssp-info-btn:hover {
+  transform: scale(1.15);
+  box-shadow: 0 2px 8px rgba(107, 78, 230, 0.4);
+}
+
+.ssp-info-tooltip {
+  position: absolute;
+  bottom: calc(100% + 8px);
+  left: 50%;
+  transform: translateX(-50%);
+  background: #1f2937;
+  color: #fff;
+  padding: 10px 14px;
+  border-radius: 8px;
+  font-size: 12px;
+  font-weight: 400;
+  font-style: normal;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  line-height: 1.5;
+  min-width: 200px;
+  max-width: 280px;
+  text-align: left;
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.2);
+  opacity: 0;
+  visibility: hidden;
+  transition: all 0.2s ease;
+  z-index: 1000;
+  pointer-events: none;
+}
+
+.ssp-info-tooltip::after {
+  content: '';
+  position: absolute;
+  top: 100%;
+  left: 50%;
+  transform: translateX(-50%);
+  border: 6px solid transparent;
+  border-top-color: #1f2937;
+}
+
+.ssp-info-btn:hover .ssp-info-tooltip {
+  opacity: 1;
+  visibility: visible;
+}
+
+.ssp-label-with-info {
+  display: flex;
+  align-items: center;
+}
+
+/* ==========================================================================
+   Custom Dropdown (Role Field Style - matches Environment dropdown)
+   ========================================================================== */
+
+.ssp-custom-dropdown {
+  position: relative;
+  width: 100%;
+}
+
+.ssp-dropdown-trigger {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  cursor: pointer;
+  min-height: 42px;
+}
+
+.ssp-dropdown-trigger .ssp-placeholder {
+  color: #9ca3af;
+}
+
+.ssp-dropdown-arrow {
+  font-size: 10px;
+  color: #6b7280;
+  transition: transform 0.2s;
+}
+
+.ssp-dropdown-menu {
+  position: absolute;
+  top: 100%;
+  left: 0;
+  right: 0;
+  z-index: 1000;
+  margin-top: 4px;
+  background-color: #ffffff;
+  border-radius: 6px;
+  box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+  border: 1px solid #e5e7eb;
+  overflow: hidden;
+}
+
+.ssp-dropdown-item {
+  padding: 10px 14px;
+  font-size: 14px;
+  color: #1f2937;
+  cursor: pointer;
+  transition: background-color 0.2s;
+}
+
+.ssp-dropdown-item:hover {
+  background-color: #f3f4f6;
+}
+
+.ssp-dropdown-item.selected {
+  background-color: #6B4EE6;
+  color: white;
+}
+
+.ssp-dropdown-custom {
+  border-top: 1px solid #e5e7eb;
+  padding: 8px;
+  background-color: #f9fafb;
+}
+
+.ssp-dropdown-custom input {
+  width: 100%;
+  padding: 8px 10px;
+  border: 1px solid #d1d5db;
+  border-radius: 4px;
+  font-size: 13px;
+  margin-bottom: 6px;
+}
+
+.ssp-dropdown-custom input:focus {
+  outline: none;
+  border-color: #6B4EE6;
+}
+
+.ssp-add-custom-btn {
+  width: 100%;
+  padding: 8px 12px;
+  background: transparent;
+  border: none;
+  color: #2563eb;
+  font-weight: 600;
+  font-size: 13px;
+  cursor: pointer;
+  text-align: left;
+  transition: color 0.2s;
+}
+
+.ssp-add-custom-btn:hover {
+  color: #1d4ed8;
+}
