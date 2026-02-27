@@ -1,0 +1,112 @@
+/* Testimonial Section */
+.testimonial-section {
+    padding: 60px 0;
+    background-color: #f9f9ff;
+    text-align: center;
+}
+
+/* Title */
+.testimonial-title {
+    font-size: 2rem;
+    font-weight: 600;
+    color: #000;
+    margin-bottom: 30px;
+    font-family: 'Poppins', sans-serif;
+}
+
+
+/* Testimonial Card */
+.testimonial-card {
+    max-width: 500px;
+    margin: 0 auto;
+    padding: 20px;
+    border-radius: 12px;
+    background: #fff;
+    box-shadow: 5px 5px 15px rgba(0, 0, 0, 0.1);
+    text-align: center;
+    transition: all 0.3s ease;
+}
+
+.testimonial-card {
+    min-height: 300px;
+}
+/* Active Card (Blue Border) */
+.testimonial-col.active .testimonial-card {
+    border: 2px solid #3b82f6;  /* Blue border */
+}
+
+/* Profile Image */
+.testimonial-image-container {
+    display: flex;
+    justify-content: center;
+    margin-bottom: 10px;
+}
+
+.testimonial-image {
+    width: 70px;
+    height: 70px;
+    border-radius: 50%;
+    background-color: #e0e0e0;
+}
+/* Testimonial Name */
+.testimonial-card .card-title {
+    font-size: 1.2rem;
+    font-weight: 600;
+    color: #000;
+    font-family: 'Roboto', sans-serif;
+    line-height: 1.6;
+    margin-bottom: 8px; /* Space between title and position */
+}
+
+/* Position */
+.testimonial-position {
+    font-size: 1rem;
+    font-weight: 500;
+    color: #888;
+    margin-bottom: 15px; /* Increase space between position and text */
+    font-family: 'Roboto', sans-serif;
+    line-height: 1.6;
+}
+
+/* Testimonial Text */
+.testimonial-card .card-text {
+    font-size: 14px;
+    color: #555;
+    font-family: 'Roboto', sans-serif;
+    line-height: 1.6;
+    margin-top: 15px;
+}
+
+
+/* Position the arrows at the left and right corners */
+.testimonial-carousel .carousel-control-prev {
+    left: -50px; /* Move to the far left */
+    
+}
+
+.testimonial-carousel .carousel-control-next {
+    right: -50px; /* Move to the far right */
+}
+
+/* Adjust arrow size and visibility */
+.testimonial-carousel .carousel-control-prev,
+.testimonial-carousel .carousel-control-next {
+    position: absolute;
+    top: 50%; /* Center vertically */
+    transform: translateY(-50%); /* Adjust for perfect centering */
+    width: 45px;
+    height: 45px;
+    background-color: rgba(0, 0, 0, 0.1);
+    border-radius: 50%;
+    opacity: 0.8;
+    transition: all 0.3s ease-in-out;
+}
+
+.testimonial-carousel .carousel-control-prev:hover,
+.testimonial-carousel .carousel-control-next:hover {
+    opacity: 1;
+    background-color: rgba(0, 0, 0, 0.2);
+}
+
+
+

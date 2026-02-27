@@ -29,9 +29,9 @@ const mockBrands = [
     { id: 'BR-04', name: 'Vodafone', campaigns: 6, spend: '₹45 L', status: 'Active' },
 ];
 
-// Dashboard API (Platform backend — same as CreativeValidationPage)
+// Dashboard API (Platform backend — Studio routes)
 const dashboardApi = axios.create({
-    baseURL: 'http://192.168.31.238:8000/api/',
+    baseURL: '/api/studio/',
     timeout: 10000,
 });
 
@@ -85,8 +85,8 @@ const AdvertisersBrands = () => {
         try {
             // Fetch users and slot bookings in parallel
             const [usersRes, bookingsRes] = await Promise.all([
-                api.get('http://192.168.31.238:8000/api/admin/users/'),
-                api.get('http://192.168.31.226:8000/api/console/slot-bookings/')
+                api.get('/api/admin/users/'),
+                api.get('/api/console/slot-bookings/')
             ]);
             const users = usersRes.data.data || [];
             const bookings = bookingsRes.data.bookings || [];

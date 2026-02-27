@@ -1,0 +1,109 @@
+.contact-page-refined {
+    padding: 140px 0 100px;
+    background-color: #ffffff;
+    min-height: 100vh;
+    font-family: 'Poppins', sans-serif;
+}
+
+.get-in-touch-title {
+    font-size: 2.25rem;
+    font-weight: 500;
+    color: #000;
+    letter-spacing: -0.02em;
+}
+
+.info-icon-box {
+    width: 40px;
+    height: 40px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #0000ff;
+    /* Brand Blue */
+    font-size: 1.25rem;
+    margin-right: 20px;
+    margin-top: 5px;
+}
+
+.info-label-refined {
+    font-size: 1.1rem;
+    font-weight: 600;
+    margin-bottom: 5px;
+    color: #000;
+}
+
+.info-value-refined {
+    font-size: 1rem;
+    color: #1a1a1a;
+    font-weight: 500;
+}
+
+/* Form Card Refined */
+.contact-form-card-refined {
+    background: #ffffff;
+    border: 1px solid #00000015;
+    border-radius: 8px;
+}
+
+.send-message-title {
+    font-size: 2rem;
+    font-weight: 400;
+    color: #000;
+}
+
+.refined-field-label {
+    font-weight: 600;
+    font-size: 0.95rem;
+    color: #333;
+    margin-bottom: 8px;
+}
+
+.refined-input-borderless {
+    background-color: #f8f8f8 !important;
+    border: none !important;
+    border-radius: 4px !important;
+    padding: 12px 18px !important;
+    font-size: 0.95rem !important;
+    color: #1a1a1a !important;
+}
+
+.refined-input-borderless::placeholder {
+    color: #999;
+}
+
+.refined-input-borderless:focus {
+    box-shadow: 0 0 0 2px rgba(0, 0, 255, 0.1) !important;
+}
+
+.refined-submit-btn {
+    background-color: #0000ff !important;
+    /* Brand Blue */
+    border: none !important;
+    border-radius: 4px !important;
+    font-weight: 500 !important;
+    font-size: 1.1rem !important;
+    color: #fff !important;
+    transition: all 0.3s ease !important;
+}
+
+.refined-submit-btn:hover {
+    background-color: #0000cc !important;
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(0, 0, 255, 0.2);
+}
+
+@media (max-width: 991px) {
+    .contact-page-refined {
+        padding-top: 100px;
+    }
+
+    .get-in-touch-title {
+        text-align: center;
+        margin-bottom: 40px !important;
+    }
+
+    .info-block-refined {
+        justify-content: center;
+        text-align: left;
+    }
+}

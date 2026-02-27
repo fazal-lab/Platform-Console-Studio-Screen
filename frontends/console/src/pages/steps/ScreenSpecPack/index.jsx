@@ -173,7 +173,7 @@ function ScreenSpecPack() {
         }
       })
 
-      const response = await fetch('http://192.168.31.226:8000/api/partner/screen-specs/', {
+      const response = await fetch('/api/partner/screen-specs/', {
         method: 'POST',
         // Don't set Content-Type header - browser will set it with boundary for multipart
         body: submitData

@@ -1,0 +1,338 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap');
+
+.compare-modal-overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(15, 23, 42, 0.45);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 16px;
+  z-index: 9998;
+}
+
+.compare-modal {
+  width: min(98vw, 1500px);
+  max-height: 92vh;
+  background: #ffffff;
+  border-radius: 14px;
+  overflow: hidden;
+  box-shadow: 0 30px 80px rgba(0, 0, 0, 0.35);
+  display: flex;
+  flex-direction: column;
+  font-family: 'Poppins', sans-serif !important;
+}
+
+.compare-modal * {
+  font-family: 'Poppins', sans-serif !important;
+}
+
+.compare-modal-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 14px 20px;
+  border-bottom: 1px solid #E5E7EB;
+}
+
+.compare-modal-title {
+  font-size: 1rem;
+  font-weight: 800;
+  color: #111827;
+}
+
+.compare-modal-close {
+  width: 34px;
+  height: 34px;
+  border-radius: 10px;
+  border: 1px solid #E5E7EB;
+  background: #ffffff;
+  font-size: 22px;
+  line-height: 1;
+  cursor: pointer;
+}
+
+.compare-modal-body {
+  padding: 14px 16px;
+  overflow: auto;
+  flex: 1;
+}
+
+.compare-empty {
+  text-align: center;
+  padding: 40px;
+  color: #94a3b8;
+  font-size: 0.9rem;
+}
+
+/* Grid — 4 columns, lean cards */
+.compare-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+  gap: 14px;
+  padding-bottom: 10px;
+  align-items: start;
+}
+
+/* Card Structure */
+.cmp-card {
+  background: #ffffff;
+  border: 1px solid #E2E8F0;
+  border-radius: 10px;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.04);
+  height: 100%;
+}
+
+/* Top Section (Dark Navy) */
+.cmp-card-top {
+  background: #0b1426;
+  padding: 10px;
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  position: relative;
+}
+
+.cmp-header-section {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  padding-right: 70px;
+}
+
+.cmp-title {
+  font-size: 0.85rem;
+  font-weight: 700;
+  color: #ffffff;
+  line-height: 1.2;
+}
+
+.cmp-subtitle {
+  font-size: 0.7rem;
+  color: #94a3b8;
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+}
+
+.cmp-dot {
+  margin: 0 4px;
+  color: #475569;
+}
+
+.cmp-badge {
+  font-size: 0.6rem;
+  font-weight: 600;
+  padding: 2px 6px;
+  border-radius: 4px;
+  position: absolute;
+  top: 10px;
+  right: 10px;
+}
+
+.cmp-badge-indoor {
+  background: #bfdbfe;
+  color: #1e40af;
+}
+
+.cmp-badge-outdoor {
+  background: #ddd6fe;
+  color: #6d28d9;
+}
+
+.cmp-image-wrap {
+  width: 100%;
+  height: 140px;
+  background: #1e293b;
+  border-radius: 6px;
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.cmp-image {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.cmp-image-placeholder {
+  color: #64748b;
+  font-size: 0.75rem;
+}
+
+/* Stats Grid in Dark Section */
+.cmp-stats-grid {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 4px;
+  padding-top: 6px;
+  border-top: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+.cmp-stat {
+  display: flex;
+  flex-direction: column;
+  min-width: 0;
+  overflow: hidden;
+}
+
+.cmp-stat label {
+  font-size: 0.6rem;
+  color: #64748b;
+  font-weight: 500;
+}
+
+.cmp-stat span {
+  font-size: 0.75rem;
+  color: #ffffff;
+  font-weight: 600;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.cmp-price {
+  color: #60a5fa !important;
+}
+
+/* Bottom Section (White) */
+.cmp-card-bottom {
+  padding: 10px;
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.cmp-section-heading {
+  font-size: 0.65rem;
+  font-weight: 700;
+  color: #6366f1;
+  margin-bottom: 2px;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+}
+
+.cmp-highlights-grid {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 4px 10px;
+}
+
+.cmp-highlight {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  font-size: 0.7rem;
+  color: #0f172a;
+  font-weight: 600;
+}
+
+.cmp-highlight i {
+  color: #2563eb;
+  font-size: 0.7rem;
+}
+
+.cmp-section-separator {
+  height: 1px;
+  background: #f1f5f9;
+  margin: 2px 0;
+}
+
+.cmp-details-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 6px;
+}
+
+.cmp-detail {
+  display: flex;
+  flex-direction: column;
+}
+
+.cmp-detail label {
+  font-size: 0.6rem;
+  color: #94a3b8;
+  font-weight: 500;
+}
+
+.cmp-detail div {
+  font-size: 0.7rem;
+  color: #0f172a;
+  font-weight: 600;
+}
+
+/* Availability Row */
+.cmp-availability-row {
+  display: flex;
+  gap: 12px;
+}
+
+.cmp-avail-item {
+  display: flex;
+  align-items: baseline;
+  gap: 3px;
+}
+
+.cmp-avail-number {
+  font-size: 0.9rem;
+  font-weight: 700;
+  color: #0f172a;
+}
+
+.cmp-avail-open {
+  color: #059669;
+}
+
+.cmp-avail-booked {
+  color: #dc2626;
+}
+
+.cmp-avail-label {
+  font-size: 0.6rem;
+  color: #94a3b8;
+  font-weight: 500;
+}
+
+.cmp-your-slots {
+  font-size: 0.7rem;
+  color: #64748b;
+  margin-top: 2px;
+}
+
+.cmp-your-slots strong {
+  color: #2563eb;
+}
+
+/* Footer */
+.compare-modal-footer {
+  padding: 10px 16px;
+  border-top: 1px solid #E5E7EB;
+  display: flex;
+  justify-content: flex-end;
+}
+
+.compare-btn {
+  height: 38px;
+  padding: 0 1.25rem;
+  border-radius: 8px;
+  font-weight: 600;
+  font-size: 0.85rem;
+  cursor: pointer;
+  transition: all 0.2s;
+}
+
+.compare-btn-outline {
+  border: 1px solid #2563eb;
+  color: #2563eb;
+  background: #ffffff;
+}
+
+.compare-btn-outline:hover {
+  background: #eff6ff;
+}

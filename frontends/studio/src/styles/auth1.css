@@ -1,0 +1,57 @@
+/* Additional auth styles - imported by VerifyCode and ResetPassword */
+.auth-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    background-color: #e8eafc;
+  }
+  
+  .auth-box {
+    background: #ffffff;
+    padding: 40px;
+    border-radius: 16px;
+    box-shadow: 0 8px 30px rgba(0, 0, 0, 0.1);
+    width: 500px;
+  }
+  
+  .auth-box h2 {
+    margin-bottom: 24px;
+    color: #111;
+    font-size: 28px;
+    text-align: center;
+  }
+  
+  .auth-box input {
+    width: 100%;
+    margin-bottom: 16px;
+    padding: 12px 16px;
+    border: 1px solid #ddd;
+    border-radius: 10px;
+    font-size: 14px;
+    transition: border-color 0.3s;
+  }
+  
+  .auth-box input:focus {
+    outline: none;
+    border-color: #4a6cf7;
+    box-shadow: 0 0 0 3px rgba(74, 108, 247, 0.1);
+  }
+  
+  .auth-box button {
+    width: 100%;
+    padding: 12px;
+    background-color: #4a6cf7;
+    color: #fff;
+    border: none;
+    border-radius: 10px;
+    cursor: pointer;
+    font-size: 16px;
+    margin-top: 10px;
+    transition: background-color 0.3s;
+  }
+  
+  .auth-box button:hover {
+    background-color: #3a57d1;
+  }
+

@@ -1,0 +1,73 @@
+.call-section {
+    padding: 60px 0;
+    background: #fff;
+    width: 100%;
+}
+
+.call-heading {
+    font-size: 2.5rem;
+    font-weight: 700;
+    color: #000;
+    margin-top: 30px; /* Adds spacing between text and buttons */
+
+}
+
+.excerpt {
+    font-size: 16px;
+    color: #555;
+    line-height: 1.8;
+    margin-top: 30px;
+    font-family: "DM Sans", sans-serif;
+
+}
+
+.call-buttons .start {
+    font-size: 1rem;
+    padding: 12px 24px;
+    border-radius: 8px;
+    background-color: blue; /* Solid blue background */
+    color: white; /* White text */
+    border: none;
+    min-height: 50px;
+  }
+  
+.call-buttons .btn.start-outline {
+    font-size: 1rem;
+    border-radius: 8px;
+    border: 2px solid blue; /* Blue border */
+    color: blue; /* Blue text */
+    background-color: transparent;
+    min-height: 50px;
+    padding: 12px 24px;
+    margin-top: 8px;
+
+  }
+
+.call-image img {
+    width: 350px;
+    height: 500px;
+    border-radius: 12px;
+    
+}
+
+/* Floating Chat Icon */
+.chat-box {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    z-index: 1000;
+}
+
+.chat-icon {
+    background: linear-gradient(135deg, #a18cd1, #fbc2eb);
+    border: none;
+    border-radius: 50%;
+    padding: 10px;
+    width: 60px;
+    height: 60px;
+}
+
+.chat-icon img {
+    width: 100%;
+}
+

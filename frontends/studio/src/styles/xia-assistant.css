@@ -1,0 +1,629 @@
+/* XIA Assistant Styles */
+.xia-assistant-sidebar {
+    width: 380px;
+    background: white;
+    border-left: 1px solid #E5E7EB;
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+    flex-shrink: 0;
+    z-index: 900;
+    box-shadow: -4px 0 20px rgba(0, 0, 0, 0.06);
+    margin-left: 0;
+}
+
+/* ─── Header ─── */
+.xia-header {
+    padding: 14px 18px;
+    border-bottom: 1px solid #F3F4F6;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background: #fff;
+    flex-shrink: 0;
+}
+
+.xia-title-group {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.xia-icon-box {
+    width: 32px;
+    height: 32px;
+    background: linear-gradient(135deg, #1A2B4D, #3b5bdb);
+    border-radius: 8px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: white;
+    font-size: 14px;
+}
+
+.xia-title {
+    font-size: 15px;
+    font-weight: 700;
+    color: #111;
+    margin: 0;
+    line-height: 1.2;
+}
+
+.xia-status-badge {
+    font-size: 10px;
+    font-weight: 600;
+    color: #16a34a;
+    background: #f0fdf4;
+    border: 1px solid #bbf7d0;
+    border-radius: 20px;
+    padding: 1px 7px;
+    display: block;
+    margin-top: 2px;
+}
+
+.xia-header-actions {
+    display: flex;
+    gap: 14px;
+    color: #9CA3AF;
+}
+
+.xia-action-icon {
+    font-size: 16px;
+    cursor: pointer;
+    transition: color 0.2s;
+}
+
+.xia-action-icon:hover {
+    color: #111;
+}
+
+/* ─── Gateway Progress ─── */
+.xia-gateway-progress {
+    padding: 10px 16px;
+    border-bottom: 1px solid #F3F4F6;
+    background: #FAFAFA;
+    flex-shrink: 0;
+}
+
+.xia-gateway-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 6px;
+}
+
+.xia-gateway-label {
+    font-size: 10px;
+    font-weight: 700;
+    color: #6B7280;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+
+.xia-gateway-count {
+    font-size: 11px;
+    font-weight: 700;
+    color: #3b5bdb;
+}
+
+.xia-gateway-bar-bg {
+    width: 100%;
+    height: 4px;
+    background: #E5E7EB;
+    border-radius: 2px;
+    overflow: hidden;
+    margin-bottom: 8px;
+}
+
+.xia-gateway-bar-fill {
+    height: 100%;
+    background: linear-gradient(90deg, #3b5bdb, #60a5fa);
+    border-radius: 2px;
+    transition: width 0.5s ease;
+}
+
+.xia-gateway-fields {
+    display: flex;
+    gap: 6px;
+    flex-wrap: wrap;
+}
+
+.xia-gateway-field {
+    display: flex;
+    align-items: center;
+    gap: 4px;
+    font-size: 10px;
+    color: #9CA3AF;
+    background: #F3F4F6;
+    border-radius: 20px;
+    padding: 2px 8px;
+    transition: all 0.3s;
+}
+
+.xia-gateway-field.done {
+    color: #16a34a;
+    background: #F0FDF4;
+}
+
+.xia-gateway-field i {
+    font-size: 10px;
+}
+
+/* ─── Body ─── */
+.xia-body {
+    flex: 1;
+    overflow-y: auto;
+    display: flex;
+    flex-direction: column;
+    min-height: 0;
+}
+
+/* ─── Welcome State ─── */
+.xia-welcome {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 32px 24px;
+    text-align: center;
+    gap: 12px;
+}
+
+.xia-welcome-icon {
+    width: 56px;
+    height: 56px;
+    border-radius: 16px;
+    background: linear-gradient(135deg, #1A2B4D, #3b5bdb);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: white;
+    font-size: 24px;
+    margin-bottom: 4px;
+}
+
+.xia-welcome-title {
+    font-size: 18px;
+    font-weight: 700;
+    color: #111;
+    margin: 0;
+}
+
+.xia-welcome-desc {
+    font-size: 13px;
+    color: #6B7280;
+    line-height: 1.6;
+    margin: 0;
+    max-width: 260px;
+}
+
+.xia-welcome-chips {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    width: 100%;
+}
+
+.xia-start-btn {
+    margin-top: 8px;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    background: linear-gradient(135deg, #1A2B4D, #3b5bdb);
+    color: white;
+    border: none;
+    border-radius: 10px;
+    padding: 11px 24px;
+    font-size: 14px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: opacity 0.2s, transform 0.1s;
+}
+
+.xia-start-btn:hover {
+    opacity: 0.9;
+    transform: translateY(-1px);
+}
+
+/* ─── Chat Messages ─── */
+.xia-chat-messages {
+    flex: 1;
+    padding: 16px;
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    overflow-y: auto;
+}
+
+.xia-chat-intro {
+    display: contents;
+}
+
+.xia-bot-bubble {
+    display: flex;
+    align-items: flex-start;
+    gap: 8px;
+}
+
+.xia-user-bubble {
+    display: flex;
+    justify-content: flex-end;
+}
+
+.xia-bot-avatar {
+    width: 26px;
+    height: 26px;
+    border-radius: 8px;
+    background: linear-gradient(135deg, #1A2B4D, #3b5bdb);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: white;
+    font-size: 11px;
+    flex-shrink: 0;
+    margin-top: 2px;
+}
+
+.xia-bubble {
+    max-width: 82%;
+    padding: 10px 13px;
+    border-radius: 14px;
+    font-size: 13px;
+    line-height: 1.55;
+    word-break: break-word;
+}
+
+.xia-bubble-bot {
+    background: #F3F4F6;
+    color: #111;
+    border-top-left-radius: 4px;
+}
+
+.xia-bubble-user {
+    background: linear-gradient(135deg, #1A2B4D, #3b5bdb);
+    color: white;
+    border-top-right-radius: 4px;
+}
+
+/* ─── Typing Indicator ─── */
+.xia-typing {
+    display: flex;
+    align-items: center;
+    gap: 4px;
+    padding: 12px 16px;
+    min-width: 52px;
+}
+
+.xia-typing span {
+    display: inline-block;
+    width: 6px;
+    height: 6px;
+    border-radius: 50%;
+    background: #9CA3AF;
+    animation: xia-bounce 1.2s ease-in-out infinite;
+}
+
+.xia-typing span:nth-child(2) {
+    animation-delay: 0.2s;
+}
+
+.xia-typing span:nth-child(3) {
+    animation-delay: 0.4s;
+}
+
+@keyframes xia-bounce {
+
+    0%,
+    80%,
+    100% {
+        transform: translateY(0);
+    }
+
+    40% {
+        transform: translateY(-5px);
+    }
+}
+
+/* ─── Quick Replies ─── */
+.xia-quick-replies {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 6px;
+    margin-top: 6px;
+    margin-left: 34px;
+}
+
+.xia-qr-btn {
+    background: white;
+    border: 1.5px solid #3b5bdb;
+    color: #3b5bdb;
+    border-radius: 20px;
+    padding: 4px 12px;
+    font-size: 12px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.15s;
+}
+
+.xia-qr-btn:hover {
+    background: #3b5bdb;
+    color: white;
+}
+
+/* ─── Redirect Notice ─── */
+.xia-redirect-notice {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    background: linear-gradient(135deg, #f0fdf4, #dcfce7);
+    border: 1px solid #bbf7d0;
+    border-radius: 10px;
+    padding: 10px 14px;
+    font-size: 12px;
+    font-weight: 600;
+    color: #16a34a;
+    animation: xia-fadein 0.4s ease;
+}
+
+.xia-redirect-notice i {
+    font-size: 14px;
+}
+
+@keyframes xia-fadein {
+    from {
+        opacity: 0;
+        transform: translateY(4px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* ─── Footer ─── */
+.xia-footer {
+    padding: 12px 16px 10px;
+    border-top: 1px solid #F3F4F6;
+    flex-shrink: 0;
+    background: #fff;
+}
+
+.xia-input-container {
+    position: relative;
+    width: 100%;
+}
+
+.xia-input {
+    width: 100%;
+    padding: 10px 40px 10px 14px;
+    border: 1.5px solid #E5E7EB;
+    border-radius: 10px;
+    font-size: 13px;
+    font-family: 'Inter', sans-serif;
+    outline: none;
+    background: #F9FAFB;
+    transition: all 0.2s;
+    color: #111;
+}
+
+.xia-input:focus {
+    background: white;
+    border-color: #3b5bdb;
+    box-shadow: 0 0 0 3px rgba(59, 91, 219, 0.1);
+}
+
+.xia-input:disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+}
+
+.xia-send-btn {
+    position: absolute;
+    right: 10px;
+    top: 50%;
+    transform: translateY(-50%);
+    border: none;
+    background: none;
+    color: #3b5bdb;
+    cursor: pointer;
+    font-size: 15px;
+    display: flex;
+    align-items: center;
+    transition: opacity 0.2s;
+}
+
+.xia-send-btn:disabled {
+    opacity: 0.3;
+    cursor: not-allowed;
+}
+
+.xia-footer-hint {
+    font-size: 10px;
+    color: #D1D5DB;
+    text-align: center;
+    margin-top: 6px;
+}
+
+/* ─── Chip buttons (legacy support) ─── */
+.xia-chip-btn {
+    width: 100%;
+    height: 40px;
+    border-radius: 10px;
+    border: 1px solid #E5E7EB;
+    background: #ffffff;
+    font-weight: 700;
+    color: #111;
+    text-align: left;
+    padding: 0 12px;
+    cursor: pointer;
+    font-size: 13px;
+}
+
+.xia-chip-btn:hover {
+    background: #F3F4F6;
+}
+
+/* ─── Dashboard Layout Adjustments ─── */
+.dashboard-layout-wrapper {
+    display: flex;
+    height: 100vh;
+    padding-top: 84px;
+    overflow: hidden;
+    position: relative;
+}
+
+.dashboard-main-container {
+    flex: 1;
+    overflow-y: auto;
+    overflow-x: hidden;
+    height: 100%;
+    padding: 0;
+    scroll-behavior: smooth;
+    -webkit-overflow-scrolling: touch;
+    will-change: scroll-position;
+}
+
+.dashboard-main-container.with-sidebar {
+    flex: 1;
+}
+
+/* ─── Mode Tabs (Chat / Live) ─── */
+.xia-mode-tabs {
+    display: flex;
+    border-bottom: 1px solid #F3F4F6;
+    background: #FAFBFC;
+    flex-shrink: 0;
+}
+
+.xia-mode-tab {
+    flex: 1;
+    padding: 9px 0;
+    border: none;
+    background: transparent;
+    font-size: 12.5px;
+    font-weight: 600;
+    color: #94A3B8;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 6px;
+    transition: all 0.2s;
+    border-bottom: 2px solid transparent;
+}
+
+.xia-mode-tab:hover {
+    color: #475569;
+    background: #F1F5F9;
+}
+
+.xia-mode-tab.active {
+    color: #1A2B4D;
+    border-bottom-color: #3b5bdb;
+    background: #fff;
+}
+
+.xia-mode-tab.xia-mode-live.active {
+    color: #059669;
+    border-bottom-color: #059669;
+}
+
+.xia-live-dot {
+    width: 6px;
+    height: 6px;
+    background: #10B981;
+    border-radius: 50%;
+    display: inline-block;
+    animation: xia-pulse 1.5s infinite;
+}
+
+/* ─── Welcome Actions (dual buttons) ─── */
+.xia-welcome-actions {
+    display: flex;
+    gap: 10px;
+    margin-top: 16px;
+    width: 100%;
+}
+
+.xia-welcome-actions .xia-start-btn {
+    flex: 1;
+    margin-top: 0;
+}
+
+.xia-live-btn {
+    flex: 1;
+    padding: 10px 16px;
+    background: linear-gradient(135deg, #059669, #10B981);
+    color: #fff;
+    border: none;
+    border-radius: 8px;
+    font-size: 13px;
+    font-weight: 600;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 6px;
+    transition: all 0.2s;
+    position: relative;
+    overflow: hidden;
+}
+
+.xia-live-btn:hover {
+    background: linear-gradient(135deg, #047857, #059669);
+    transform: translateY(-1px);
+    box-shadow: 0 4px 12px rgba(5, 150, 105, 0.3);
+}
+
+.xia-live-pulse {
+    position: absolute;
+    top: 6px;
+    right: 6px;
+    width: 8px;
+    height: 8px;
+    background: #6EE7B7;
+    border-radius: 50%;
+    animation: xia-pulse 1.5s infinite;
+}
+
+@keyframes xia-pulse {
+    0% {
+        opacity: 1;
+        transform: scale(1);
+    }
+
+    50% {
+        opacity: 0.5;
+        transform: scale(1.4);
+    }
+
+    100% {
+        opacity: 1;
+        transform: scale(1);
+    }
+}
+
+/* ─── Redirect Buttons ─── */
+.xia-redirect-btn {
+    margin-top: 8px;
+    padding: 7px 14px;
+    background: linear-gradient(135deg, #EEF2FF, #E0E7FF);
+    color: #4338CA;
+    border: 1px solid #C7D2FE;
+    border-radius: 8px;
+    font-size: 12px;
+    font-weight: 600;
+    cursor: pointer;
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    transition: all 0.2s;
+}
+
+.xia-redirect-btn:hover {
+    background: linear-gradient(135deg, #E0E7FF, #C7D2FE);
+    transform: translateY(-1px);
+    box-shadow: 0 2px 8px rgba(99, 102, 241, 0.2);
+}

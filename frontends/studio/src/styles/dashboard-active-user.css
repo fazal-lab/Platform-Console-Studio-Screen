@@ -1,0 +1,428 @@
+/* Active User Dashboard Styles */
+@import url('https://fonts.googleapis.com/css2?family=Google+Sans:wght@400;500;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700&display=swap');
+
+.active-user-dashboard {
+    padding: 0 12px;
+    /* Minimal Side padding */
+    font-family: 'Google Sans', 'Inter', sans-serif;
+    color: #111;
+    max-width: 99%;
+    /* Close to full width */
+    margin: 0 auto;
+    padding-top: 24px;
+    padding-bottom: 24px;
+    min-height: 100vh;
+}
+
+/* Header */
+.au-header-section {
+    margin-bottom: 24px;
+    /* Standardized to 24px */
+}
+
+.au-hero-title {
+    font-family: 'Poppins', sans-serif;
+    font-size: 28px;
+    font-weight: 600;
+    color: #000;
+    margin-bottom: 8px;
+    line-height: 1.2;
+}
+
+.au-hero-subtitle {
+    font-family: 'Manrope', sans-serif;
+    font-size: 15px;
+    color: #5f6368;
+    font-weight: 600;
+}
+
+/* Top Action Cards */
+.au-top-cards-row {
+    display: grid;
+    grid-template-columns: 1fr 1.6fr;
+    /* Give more width to Launch card */
+    gap: 24px;
+    margin-bottom: 24px;
+}
+
+.au-card-intelligence {
+    background-color: #EEF2FF;
+    border-radius: 20px;
+    padding: 40px;
+    border: none;
+    min-height: 280px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.02);
+}
+
+.au-card-launch {
+    background-color: #1A2B4D;
+    border-radius: 20px;
+    padding: 40px;
+    border: none;
+    min-height: 280px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    color: white;
+    box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
+}
+
+.au-icon-square {
+    width: 56px;
+    height: 56px;
+    background: white;
+    border-radius: 14px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 24px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
+}
+
+.au-icon-square.dark-bg {
+    background: rgba(255, 255, 255, 0.1);
+    color: white;
+}
+
+.au-card-title {
+    font-size: 22px;
+    font-weight: 700;
+    margin-bottom: 12px;
+}
+
+.au-card-desc {
+    font-size: 15px;
+    color: #4B5563;
+    margin-bottom: 24px;
+    line-height: 1.6;
+    max-width: 90%;
+}
+
+.au-card-launch .au-card-desc {
+    color: #D1D5DB;
+}
+
+.au-link-btn {
+    color: #0000FF;
+    font-weight: 700;
+    font-size: 14px;
+    text-decoration: none;
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    transition: gap 0.2s;
+}
+
+.au-link-btn:hover {
+    gap: 10px;
+}
+
+.au-primary-btn {
+    background-color: #0000FF;
+    color: white;
+    padding: 12px 24px;
+    border-radius: 8px;
+    font-weight: 600;
+    font-size: 14px;
+    border: none;
+    cursor: pointer;
+    width: fit-content;
+    text-decoration: none;
+    transition: transform 0.2s, background-color 0.2s;
+}
+
+.au-primary-btn:hover {
+    background-color: #0000CC;
+    color: white;
+    transform: translateY(-2px);
+}
+
+/* Metrics Row */
+.au-metrics-row {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 24px;
+    margin-bottom: 24px;
+}
+
+.au-metric-card {
+    background: white;
+    border: 1px solid #E5E7EB;
+    border-radius: 16px;
+    padding: 24px;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05);
+    transition: transform 0.2s, box-shadow 0.2s;
+}
+
+.au-metric-card:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+}
+
+.au-metric-header {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    font-size: 15px;
+    font-weight: 700;
+    color: #111;
+    margin-bottom: 20px;
+}
+
+.au-metric-value {
+    font-size: 36px;
+    font-weight: 700;
+    color: #111;
+    display: flex;
+    align-items: baseline;
+    gap: 12px;
+    line-height: 1;
+}
+
+.au-metric-subtext {
+    font-size: 13px;
+    color: #6B7280;
+    font-weight: 500;
+}
+
+.au-trend-up {
+    color: #22C55E;
+    font-size: 13px;
+    font-weight: 700;
+    background: #F0FDF4;
+    padding: 2px 6px;
+    border-radius: 4px;
+}
+
+/* Two Column Layout (Content + Alerts) */
+.au-main-content-grid {
+    display: grid;
+    grid-template-columns: 1.5fr 1fr;
+    /* Adjusted ratio for larger alerts card */
+    gap: 24px;
+    /* Standardized to 24px */
+}
+
+/* Recent Campaigns */
+.au-section-card {
+    background: white;
+    border: 1px solid #E5E7EB;
+    border-radius: 16px;
+    padding: 32px;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.02);
+}
+
+.au-section-header {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    margin-bottom: 32px;
+}
+
+.au-section-title {
+    font-size: 18px;
+    font-weight: 700;
+    color: #111;
+    margin: 0;
+}
+
+.au-campaign-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 24px 0;
+    border-bottom: 1px solid #F3F4F6;
+    transition: background-color 0.2s;
+}
+
+.au-campaign-item:hover {
+    background-color: #FAFAFA;
+    padding-left: 12px;
+    padding-right: 12px;
+    margin-left: -12px;
+    margin-right: -12px;
+    border-radius: 8px;
+    border-color: transparent;
+}
+
+.au-campaign-item:last-child {
+    border-bottom: none;
+    padding-bottom: 0;
+}
+
+.au-campaign-info h4 {
+    font-size: 15px;
+    font-weight: 700;
+    margin-bottom: 6px;
+    color: #111;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+}
+
+.au-campaign-info p {
+    font-size: 13px;
+    color: #6B7280;
+    margin: 0;
+    font-weight: 500;
+}
+
+.au-status-badge {
+    font-size: 12px;
+    padding: 4px 10px;
+    border-radius: 6px;
+    font-weight: 600;
+}
+
+.au-status-live {
+    background-color: #DCFCE7;
+    /* Brighter green bg */
+    color: #166534;
+}
+
+.au-status-ending {
+    background-color: #FEF9C3;
+    color: #854D0E;
+}
+
+.au-status-scheduled {
+    background-color: #E0E7FF;
+    color: #4338CA;
+}
+
+.au-status-draft {
+    background-color: #F3F4F6;
+    color: #6B7280;
+}
+
+.au-status-completed {
+    background-color: #DCFCE7;
+    color: #166534;
+    border: 1px solid #BBF7D0;
+}
+
+.au-status-cancelled {
+    background-color: #FEE2E2;
+    color: #991B1B;
+}
+
+.au-empty-state {
+    text-align: center;
+    padding: 48px 24px;
+    color: #6B7280;
+}
+
+.au-empty-state p {
+    font-size: 15px;
+    margin-bottom: 20px;
+}
+
+.au-view-link {
+    font-size: 13px;
+    color: #0000FF;
+    font-weight: 700;
+    cursor: pointer;
+    text-decoration: none;
+    display: flex;
+    align-items: center;
+    gap: 4px;
+    padding: 6px 12px;
+    border-radius: 6px;
+    transition: background-color 0.2s;
+}
+
+.au-view-link:hover {
+    background-color: #EFF6FF;
+}
+
+/* Operational Alerts */
+.au-alerts-card {
+    background: #FFF5F5;
+    /* Warmer/lighter background */
+    border: 1px solid #FFE4E4;
+}
+
+.au-alert-header-text {
+    color: #111;
+}
+
+.au-alert-item {
+    background: white;
+    border: 1px solid #F3F4F6;
+    border-radius: 10px;
+    padding: 20px;
+    margin-bottom: 16px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    box-shadow: 0 1px 2px rgba(0, 0, 0, 0.03);
+    transition: transform 0.2s, box-shadow 0.2s;
+}
+
+.au-alert-item:hover {
+    transform: translateY(-1px);
+    box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05);
+}
+
+.au-alert-item:last-child {
+    margin-bottom: 0;
+}
+
+.au-alert-content h5 {
+    font-size: 14px;
+    font-weight: 700;
+    margin-bottom: 4px;
+    color: #111;
+}
+
+.au-alert-content p {
+    font-size: 12px;
+    color: #6B7280;
+    margin: 0;
+    font-weight: 500;
+}
+
+.au-alert-action {
+    font-size: 12px;
+    font-weight: 700;
+    color: #111;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    gap: 4px;
+    white-space: nowrap;
+    padding: 4px 8px;
+    border-radius: 4px;
+    transition: background 0.2s;
+}
+
+.au-alert-action:hover {
+    background: #F3F4F6;
+}
+
+/* Responsive */
+@media (max-width: 1200px) {
+    .au-metrics-row {
+        grid-template-columns: 1fr 1fr;
+    }
+}
+
+@media (max-width: 992px) {
+    .au-top-cards-row {
+        grid-template-columns: 1fr;
+    }
+
+    .au-metrics-row {
+        grid-template-columns: 1fr 1fr;
+    }
+
+    .au-main-content-grid {
+        grid-template-columns: 1fr;
+    }
+}

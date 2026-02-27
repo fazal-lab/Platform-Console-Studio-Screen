@@ -43,7 +43,7 @@ const ScreenUnprofiled = () => {
       console.log('Using token:', token.substring(0, 20) + '...');
 
       // Headers-ல token add பண்ணு
-      const response = await api.post('http://192.168.31.226:8000/api/console/screens/verify/', verifyData, {
+      const response = await api.post('/api/console/screens/verify/', verifyData, {
         headers: {
           'Authorization': `Bearer ${token}`,
           'Content-Type': 'application/json'
@@ -116,7 +116,7 @@ const ScreenUnprofiled = () => {
 
       console.log('Sending reject data:', rejectData);
 
-      const response = await api.post('http://192.168.31.226:8000/api/console/screens/verify/', rejectData, {
+      const response = await api.post('/api/console/screens/verify/', rejectData, {
         headers: {
           'Authorization': `Bearer ${token}`,
           'Content-Type': 'application/json'

@@ -1,0 +1,41 @@
+.custom-navbar {
+  padding: 16px 0;
+  background-color: #000000 !important;
+  /* Force black background as per design */
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.navbar-brand .navbar-logo {
+  height: 32px;
+  /* Adjust based on actual logo ratio */
+}
+
+/* If no logo image, simulate text logo */
+.navbar-brand {
+  font-size: 24px;
+  font-weight: bold;
+  color: #fff !important;
+}
+
+.custom-nav-link {
+  font-size: 14px;
+  font-weight: 500;
+  transition: color 0.2s;
+}
+
+.custom-nav-link:hover {
+  color: #0066ff !important;
+}
+
+.custom-login-btn {
+  background-color: #0066ff;
+  border: none;
+  padding: 8px 24px;
+  border-radius: 4px;
+  font-size: 14px;
+  font-weight: 600;
+}
+
+.custom-login-btn:hover {
+  background-color: #0052cc;
+}

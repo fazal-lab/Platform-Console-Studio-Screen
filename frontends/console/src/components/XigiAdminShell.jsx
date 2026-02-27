@@ -116,7 +116,7 @@ function XigiAdminShellContent() {
     useEffect(() => {
         const fetchNotifCount = async () => {
             try {
-                const res = await fetch('http://192.168.31.226:8000/api/console/screens/external-submit/');
+                const res = await fetch('/api/console/screens/external-submit/');
                 const data = await res.json();
                 const screens = data.screens || [];
                 const pendingCount = screens.filter(s =>

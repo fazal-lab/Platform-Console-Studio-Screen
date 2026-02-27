@@ -1,0 +1,295 @@
+/* Campaigns Page Specific Styles */
+.campaigns-page-wrapper {
+    background-color: #F8FAFC;
+    /* Light blue-grey background */
+    font-family: 'Poppins', sans-serif !important;
+    color: #111827;
+    /* Dark grey text */
+    padding-top: 104px;
+}
+
+.campaigns-main-content,
+.campaigns-main-content * {
+    font-family: 'Poppins', sans-serif !important;
+}
+
+.campaigns-main-content {
+    margin: 0 auto;
+    padding: 0 24px !important;
+    max-width: 98% !important;
+    padding-top: 24px !important;
+    padding-bottom: 24px !important;
+}
+
+/* Header Section */
+.campaigns-page-title {
+    font-weight: 700;
+    font-size: 24px;
+    color: #111827;
+    margin-bottom: 4px;
+}
+
+.campaigns-page-subtitle {
+    color: #6B7280;
+    font-size: 14px;
+    font-weight: 400;
+}
+
+.campaigns-create-btn {
+    background-color: #2563EB;
+    /* Royal Blue */
+    border: none;
+    border-radius: 8px;
+    font-weight: 600;
+    font-size: 14px;
+    padding: 10px 20px;
+    box-shadow: 0 1px 2px rgba(0, 0, 0, 0.05);
+    transition: background-color 0.2s;
+}
+
+.campaigns-create-btn:hover {
+    background-color: #1D4ED8;
+}
+
+/* Search and Filter Box */
+.campaigns-search-filter-box {
+    background-color: #FFFFFF;
+    border: 1px solid #E5E7EB;
+    border-radius: 8px;
+    /* Rounded corners for the whole bar */
+    padding: 8px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    box-shadow: 0 1px 2px rgba(0, 0, 0, 0.05);
+    margin-bottom: 24px;
+    height: 56px;
+}
+
+.campaigns-search-group-inline {
+    flex-grow: 1;
+    border: none;
+    background: transparent;
+    margin-right: 16px;
+    height: 100%;
+}
+
+.campaigns-search-icon-inline {
+    background: transparent;
+    border: none;
+    color: #9CA3AF;
+    padding-left: 16px;
+    font-size: 16px;
+}
+
+.campaigns-search-input-inline {
+    background: transparent;
+    border: none;
+    font-size: 14px;
+    color: #374151;
+    padding-left: 12px;
+    height: 100%;
+    box-shadow: none !important;
+}
+
+.campaigns-search-input-inline::placeholder {
+    color: #9CA3AF;
+}
+
+.campaigns-filters-inline {
+    display: flex;
+    gap: 12px;
+    padding-right: 8px;
+}
+
+.campaigns-filter-btn-inline {
+    background-color: #F9FAFB !important;
+    /* Very light grey */
+    border: 1px solid #E5E7EB !important;
+    color: #374151 !important;
+    font-size: 14px;
+    font-weight: 500;
+    border-radius: 6px !important;
+    padding: 8px 16px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    min-width: 140px;
+    height: 40px;
+}
+
+.campaigns-filter-btn-inline::after {
+    margin-left: auto;
+    font-size: 12px;
+    color: #9CA3AF;
+}
+
+.campaigns-filter-btn-inline:hover,
+.campaigns-filter-btn-inline:focus {
+    background-color: #F3F4F6 !important;
+    border-color: #D1D5DB !important;
+    color: #111827 !important;
+    box-shadow: none !important;
+}
+
+/* Table Styles */
+.campaigns-table-container {
+    background-color: #FFFFFF;
+    border-radius: 12px;
+    /* Rounded container for table */
+    border: 1px solid #E5E7EB;
+    overflow: hidden;
+    /* Clip corners */
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05);
+}
+
+.campaigns-table {
+    margin-bottom: 0;
+    vertical-align: middle;
+}
+
+.campaigns-table thead th {
+    background-color: #FFFFFF;
+    color: #6B7280;
+    /* Grey text */
+    font-size: 11px;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    border-bottom: 1px solid #E5E7EB;
+    padding: 16px 24px;
+    vertical-align: middle;
+}
+
+.campaigns-table tbody tr {
+    border-bottom: 1px solid #F3F4F6;
+    transition: background-color 0.15s;
+}
+
+.campaigns-table tbody tr:last-child {
+    border-bottom: none;
+}
+
+.campaigns-table tbody tr:hover {
+    background-color: #F9FAFB;
+}
+
+.campaigns-table tbody td {
+    padding: 20px 24px;
+    font-size: 14px;
+    vertical-align: middle;
+    border: none;
+    /* Let row handle border */
+    color: #374151;
+}
+
+/* Column Specific Styles */
+.campaign-name-cell {
+    font-weight: 600;
+    color: #111827 !important;
+    min-width: 200px;
+}
+
+.campaign-brand-cell {
+    color: #4B5563;
+    font-weight: 500;
+}
+
+.campaign-id-cell {
+    color: #6B7280;
+    font-family: 'Poppins', sans-serif !important;
+    font-size: 13px;
+}
+
+.campaign-budget-cell {
+    font-weight: 500;
+}
+
+.budget-used {
+    color: #111827;
+    font-weight: 600;
+}
+
+.budget-separator {
+    color: #9CA3AF;
+    margin: 0 4px;
+}
+
+.budget-total {
+    color: #9CA3AF;
+    font-weight: 400;
+}
+
+.campaign-screens-cell {
+    color: #374151;
+    font-weight: 500;
+}
+
+.campaign-duration-cell {
+    color: #6B7280;
+    white-space: nowrap;
+}
+
+/* Status Badge */
+.status-badge {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    padding: 4px 12px;
+    border-radius: 6px;
+    font-size: 12px;
+    font-weight: 600;
+    line-height: 1.2;
+    min-width: 80px;
+    text-align: center;
+}
+
+/* Action Button */
+.action-btn-view {
+    color: #374151;
+    border-color: #E5E7EB;
+    font-weight: 500;
+    padding: 6px 16px;
+    border-radius: 6px;
+    background-color: #FFFFFF;
+    font-size: 13px;
+    transition: all 0.2s;
+}
+
+.action-btn-view:hover {
+    background-color: #F9FAFB;
+    border-color: #D1D5DB;
+    color: #111827;
+}
+
+/* Responsive Adjustments */
+@media (max-width: 768px) {
+    .campaigns-main-content {
+        padding: 0 16px !important;
+    }
+
+    .campaigns-search-filter-box {
+        flex-direction: column;
+        height: auto;
+        padding: 16px;
+        gap: 16px;
+    }
+
+    .campaigns-search-group-inline {
+        width: 100%;
+        margin-right: 0;
+        border-bottom: 1px solid #E5E7EB;
+        padding-bottom: 8px;
+    }
+
+    .campaigns-filters-inline {
+        width: 100%;
+        padding-right: 0;
+        justify-content: space-between;
+    }
+
+    .campaigns-filter-btn-inline {
+        width: 48%;
+        min-width: auto;
+    }
+}

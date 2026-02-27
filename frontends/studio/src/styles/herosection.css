@@ -1,0 +1,145 @@
+.hero-section {
+    padding: 100px 0;
+    background-color: #ffffff;
+    font-family: 'Poppins', sans-serif;
+}
+
+.heading{
+    font-size: 45px;
+    font-weight: 600;
+    color: #000;
+    letter-spacing: 0.5px; /* Adjusted letter spacing */
+    line-height: 1.5; /* Increased line height */
+    margin-bottom: 20px;
+    font-family: 'Poppins', sans-serif;
+    display: flex;
+    flex-direction: column;
+    justify-content: start;
+
+}
+
+.excerpt p{
+    font-size:17px;
+    color: #666;
+    margin-bottom: 30px; /* Adds spacing between text and buttons */
+    font-family: "DM Sans", sans-serif;
+    font-weight: 600;
+}
+
+.start {
+    margin-top: 8px;
+    font-family: DM Sans;
+    font-weight: 700px;
+    font-size: 17px;
+
+}
+
+.hero-buttons .btn.start {
+    font-size: 1rem;
+    padding: 12px 24px;
+    border-radius: 8px;
+    background-color: blue; /* Solid blue background */
+    color: white; /* White text */
+    border: none;
+    min-height: 50px;
+  }
+  
+  .hero-buttons .btn.start-outline {
+    font-size: 1rem;
+    border-radius: 8px;
+    border: 2px solid blue; /* Blue border */
+    color: blue; /* Blue text */
+    background-color: transparent;
+    min-height: 50px;
+    padding: 12px 24px;
+  }
+
+  
+.hero-image img {
+    width: 600px;
+    height: 750px;
+    align-items: left;
+
+}
+
+.ads {
+    margin-top: 10px;
+    text-align: center;
+    font-family: "DM Sans", sans-serif;
+    color: #000;
+    font-size: 20px;
+}
+
+.publisher-link {
+    color: #0000ff;
+    font-weight: bold;
+    text-decoration: none;
+    font-family: "DM Sans", sans-serif;
+}
+
+.feature-box {
+    background: #f8f8f8;
+    padding: 30px;
+    border-radius: 15px;
+    display: flex;
+    justify-content: center; /* Keeps the content centered */
+    align-items: center;
+    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
+    width: 100%; /* Ensures container width doesn't change */
+    max-width: 100%; /* Limits width */
+    height: 198px;
+    margin: 0 auto;
+}
+
+/* Ensures all items stay in a single row */
+.feature-item {
+    text-align: center;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+}
+
+/* Feature Content */
+.feature-content {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+}
+
+/* Icon Size */
+.feature-icon {
+    width: 50px;
+    height: auto;
+    margin-bottom: 8px;
+}
+
+/* Text Styling */
+.feature-item p {
+    margin-top: 5px;
+    font-size:17px;
+    font-weight: 500;
+    font-family: 'Poppins', sans-serif;
+    color: #000;
+}
+
+
+/* Divider */
+.divider {
+    height: 60px;
+    width: 1px;
+    background-color: #ddd;
+    position: absolute;
+    right: 0;
+    top: 50%;
+    transform: translateY(-50%);
+}
+
+/* Remove Divider on the last column */
+.feature-item:last-child .divider {
+    display: none;
+}
+
+

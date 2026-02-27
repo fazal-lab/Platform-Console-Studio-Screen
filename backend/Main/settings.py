@@ -13,6 +13,9 @@ https://docs.djangoproject.com/en/5.2/ref/settings/
 import os
 import environ
 from pathlib import Path
+from dotenv import load_dotenv
+
+load_dotenv(os.path.join(os.path.dirname(os.path.dirname(os.path.abspath(__file__))), '.env'))
 from datetime import timedelta
 from urllib.parse import urlparse
 
@@ -63,6 +66,8 @@ INSTALLED_APPS = [
     'rest_framework_simplejwt',
     'console',
     'console.screen_profiler',
+    'studio',
+    'xia',
 ]
 
 MIDDLEWARE = [
@@ -101,7 +106,7 @@ WSGI_APPLICATION = 'Main.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql',
-        'NAME': 'xigiconsole',
+        'NAME': 'xigiplatform',
         'USER': 'postgres',
         'PASSWORD': '0000',
         'HOST': 'localhost',
@@ -138,6 +143,14 @@ CSRF_TRUSTED_ORIGINS = [
     'http://127.0.0.1:3000',
     'http://localhost:5173',
     'http://127.0.0.1:5173',
+    'http://localhost:5174',
+    'http://127.0.0.1:5174',
+]
+
+# Authentication backends — Studio uses email-based auth
+AUTHENTICATION_BACKENDS = [
+    'studio.backends.EmailBackend',
+    'django.contrib.auth.backends.ModelBackend',
 ]
 
 # Static & Media
@@ -152,10 +165,15 @@ AUTH_USER_MODEL = 'console.CustomUser'
 
 # Google Maps Config (From env)
 # Google Maps Config (From env)
-GOOGLE_MAPS_API_KEY = os.environ.get('GOOGLE_MAPS_API_KEY', 'AIzaSyBH4EwoH5zFCPX97gRPy9mYXK6FR21zn4U')
+GOOGLE_MAPS_API_KEY = os.environ.get('GOOGLE_MAPS_API_KEY', '')
 
 # Gemini API (for LLM Hybrid Mode)
-GEMINI_API_KEY = os.environ.get('GEMINI_API_KEY', 'AIzaSyDBqISjmB-Ru6DIX20Bo9B8dDGq23KyzZQ')
+GEMINI_API_KEY = os.environ.get('GEMINI_API_KEY', '')
+
+# ── XIA Settings ──
+XIA_SCREENS_API_URL = os.environ.get('XIA_SCREENS_API_URL', 'http://localhost:8000/api/console/screens/')
+XIA_SCREEN_SOURCE_MODEL = 'console.ScreenSpec'
+GROQ_API_KEY = os.environ.get('GROQ_API_KEY', '')
 
 # ── Email Configuration (Gmail SMTP) ──
 EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'

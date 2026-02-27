@@ -12,9 +12,9 @@ import api from '../utils/api';
 import axios from 'axios';
 import { generateDeploymentPdf } from '../utils/generateDeploymentPdf';
 
-// ─── Dashboard API (Platform backend) ───
+// ─── Dashboard API (Platform backend - Studio routes) ───
 const dashboardApi = axios.create({
-    baseURL: 'http://192.168.31.238:8000/api/',
+    baseURL: '/api/studio/',
     timeout: 10000,
 });
 

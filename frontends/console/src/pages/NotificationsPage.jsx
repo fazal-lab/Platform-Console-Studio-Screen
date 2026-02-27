@@ -28,7 +28,7 @@ const NotificationsPage = () => {
         setLoading(true);
         try {
             // ── Screens ──
-            const screensRes = await axios.get('http://192.168.31.226:8000/api/console/screens/external-submit/');
+            const screensRes = await axios.get('/api/console/screens/external-submit/');
             const allScreens = screensRes.data.screens || [];
             const screens = allScreens
                 .filter(s => ['PENDING', 'SUBMITTED', 'RESUBMITTED'].includes(s.status))

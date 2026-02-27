@@ -1,0 +1,536 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap');
+
+.screen-modal-overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.6);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 16px;
+  z-index: 9999;
+}
+
+.screen-modal {
+  width: min(950px, 95vw);
+  height: auto;
+  max-height: 90vh;
+  background: #ffffff;
+  border-radius: 12px;
+  overflow: hidden;
+  display: flex;
+  box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.25);
+  font-family: 'Poppins', sans-serif !important;
+}
+
+.screen-modal * {
+  font-family: 'Poppins', sans-serif !important;
+}
+
+/* Left Panel */
+.screen-modal-left {
+  width: 42%;
+  background: #0b1426;
+  /* Dark navy */
+  display: flex;
+  flex-direction: column;
+  padding: 0;
+  position: relative;
+}
+
+.screen-modal-header {
+  padding: 16px 20px 10px;
+}
+
+.screen-modal-title-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 2px;
+}
+
+.screen-modal-title {
+  font-size: 1.4rem;
+  font-weight: 700;
+  color: #ffffff;
+  line-height: 1.2;
+}
+
+.screen-modal-badge {
+  background: #bfdbfe;
+  color: #1e40af;
+  font-size: 0.7rem;
+  font-weight: 600;
+  padding: 3px 6px;
+  border-radius: 4px;
+  white-space: nowrap;
+}
+
+.screen-modal-subtitle {
+  font-size: 0.8rem;
+  color: #94a3b8;
+  font-weight: 400;
+}
+
+.screen-modal-dot {
+  margin: 0 6px;
+  color: #475569;
+}
+
+.screen-modal-image-wrap {
+  flex: 1;
+  width: 100%;
+  position: relative;
+  overflow: hidden;
+  padding: 0 16px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.screen-modal-image {
+  width: 100%;
+  height: 100%;
+  max-height: 100%;
+  object-fit: contain;
+  border-radius: 8px;
+}
+
+.screen-modal-image-placeholder {
+  width: 100%;
+  height: 100%;
+  background: #1e293b;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #64748b;
+  font-size: 0.85rem;
+}
+
+/* Image Carousel Navigation */
+.screen-image-nav {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  background: rgba(0, 0, 0, 0.5);
+  border: none;
+  color: #fff;
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.2rem;
+  transition: background 0.2s;
+  z-index: 10;
+}
+
+.screen-image-nav:hover {
+  background: rgba(0, 0, 0, 0.7);
+}
+
+.screen-image-nav-left {
+  left: 8px;
+}
+
+.screen-image-nav-right {
+  right: 8px;
+}
+
+.screen-image-indicator {
+  position: absolute;
+  bottom: 8px;
+  left: 50%;
+  transform: translateX(-50%);
+  background: rgba(0, 0, 0, 0.6);
+  color: #fff;
+  padding: 4px 10px;
+  border-radius: 12px;
+  font-size: 0.75rem;
+  font-weight: 500;
+}
+
+.screen-modal-footer-stats {
+  background: #0b1426;
+  padding: 16px 20px;
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 12px;
+  border-top: 1px solid #1e293b;
+}
+
+.screen-stat {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+
+.screen-stat-label {
+  font-size: 0.65rem;
+  color: #64748b;
+  font-weight: 500;
+}
+
+.screen-stat-value {
+  font-size: 0.9rem;
+  color: #ffffff;
+  font-weight: 600;
+  white-space: nowrap;
+}
+
+.screen-price-highlight {
+  color: #60a5fa;
+}
+
+/* Right Panel */
+.screen-modal-right {
+  width: 58%;
+  background: #ffffff;
+  display: flex;
+  flex-direction: column;
+  position: relative;
+  padding: 0;
+}
+
+.screen-modal-close-x {
+  position: absolute;
+  top: 12px;
+  right: 12px;
+  background: transparent;
+  border: none;
+  font-size: 1.4rem;
+  color: #0f172a;
+  cursor: pointer;
+  z-index: 10;
+  padding: 2px;
+  line-height: 1;
+}
+
+.screen-right-content {
+  flex: 1;
+  overflow-y: auto;
+  padding: 16px 24px 10px;
+  /* Custom scrollbar hidden or thin if needed, attempting to fit content to avoid scroll */
+}
+
+.screen-section-heading {
+  font-size: 0.95rem;
+  font-weight: 600;
+  color: #94a3b8;
+  margin-bottom: 8px;
+  margin-top: 0;
+}
+
+/* Highlights Grid */
+.screen-highlights-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 6px 16px;
+  margin-bottom: 12px;
+}
+
+.screen-highlight-item {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 0.85rem;
+  color: #0f172a;
+  font-weight: 600;
+}
+
+.screen-check-icon {
+  color: #2563eb;
+  font-size: 1rem;
+  stroke-width: 1px;
+}
+
+/* XIA Reasoning Box */
+.xia-reasoning-box {
+  background: #eff6ff;
+  border-radius: 6px;
+  padding: 10px 12px;
+  margin-bottom: 12px;
+}
+
+.xia-reasoning-title {
+  color: #1e3a8a;
+  font-weight: 700;
+  font-size: 0.85rem;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  margin-bottom: 4px;
+}
+
+.xia-reasoning-text {
+  color: #1e3a8a;
+  font-size: 0.85rem;
+  line-height: 1.4;
+  margin: 0;
+}
+
+/* Availability Info Box */
+.availability-info-box {
+  background: #FEF2F2;
+  border-radius: 6px;
+  padding: 10px 12px;
+  margin-bottom: 12px;
+  border-left: 3px solid #DC2626;
+}
+
+.availability-info-title {
+  color: #991B1B;
+  font-weight: 700;
+  font-size: 0.85rem;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  margin-bottom: 6px;
+}
+
+.availability-reason {
+  color: #7F1D1D;
+  font-size: 0.8rem;
+  line-height: 1.4;
+  margin: 0 0 8px 0;
+}
+
+.availability-detail {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  color: #7F1D1D;
+  font-size: 0.8rem;
+  margin-bottom: 4px;
+}
+
+.availability-detail i {
+  color: #DC2626;
+  font-size: 0.9rem;
+}
+
+.availability-detail:last-child {
+  margin-bottom: 0;
+}
+
+/* Scheduled Block Availability */
+.availability-scheduled-block {
+  background: #FFFBEB;
+  border-left-color: #D97706;
+}
+
+.availability-scheduled-block .availability-info-title {
+  color: #92400E;
+}
+
+/* Maintenance / Unavailable Warning */
+.availability-maintenance {
+  background: #FEF2F2;
+  border-left-color: #DC2626;
+}
+
+.availability-maintenance .availability-info-title {
+  color: #991B1B;
+}
+
+.availability-maintenance .availability-guidance {
+  color: #7F1D1D;
+}
+
+.availability-maintenance .availability-guidance i {
+  color: #DC2626;
+}
+
+.availability-campaign-dates {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  margin-bottom: 10px;
+  background: #ffffff;
+  border-radius: 6px;
+  padding: 10px 12px;
+  border: 1px solid #FDE68A;
+}
+
+.availability-date-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.availability-date-label {
+  font-size: 0.78rem;
+  color: #78716C;
+  font-weight: 500;
+}
+
+.availability-date-value {
+  font-size: 0.82rem;
+  color: #1C1917;
+  font-weight: 600;
+}
+
+.availability-date-row.blocked .availability-date-label {
+  color: #DC2626;
+  font-weight: 600;
+}
+
+.availability-date-row.blocked .availability-date-value {
+  color: #DC2626;
+  font-weight: 700;
+}
+
+.availability-guidance {
+  font-size: 0.78rem;
+  color: #78716C;
+  line-height: 1.5;
+  margin: 0;
+  display: flex;
+  gap: 6px;
+  align-items: flex-start;
+}
+
+.availability-guidance i {
+  color: #D97706;
+  font-size: 0.85rem;
+  margin-top: 2px;
+  flex-shrink: 0;
+}
+
+.availability-guidance strong {
+  color: #92400E;
+  white-space: nowrap;
+}
+
+/* Info Grids (Where is it, Hardware) */
+.screen-info-grid-section {
+  margin-bottom: 12px;
+  border-top: 1px solid #e2e8f0;
+  padding-top: 10px;
+}
+
+.screen-details-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 8px 20px;
+}
+
+.screen-detail-item {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+
+.screen-detail-item label {
+  font-size: 0.75rem;
+  color: #94a3b8;
+  font-weight: 500;
+}
+
+.screen-detail-item div {
+  font-size: 0.85rem;
+  color: #0f172a;
+  font-weight: 600;
+}
+
+.full-width {
+  grid-column: span 2;
+}
+
+/* Restrictions */
+.screen-restrictions-box {
+  background: #fef2f2;
+  border-radius: 6px;
+  padding: 8px 12px;
+  margin-bottom: 12px;
+}
+
+.screen-restrictions-header {
+  color: #b91c1c;
+  font-weight: 600;
+  font-size: 0.8rem;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  margin-bottom: 6px;
+}
+
+.screen-restrictions-list {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+}
+
+.restriction-tag {
+  background: #ffffff;
+  color: #b91c1c;
+  font-size: 0.75rem;
+  font-weight: 600;
+  padding: 4px 8px;
+  border-radius: 4px;
+  border: 1px solid #fecaca;
+}
+
+/* Actions Footer */
+.screen-modal-actions {
+  padding: 10px 24px 16px;
+  display: grid;
+  grid-template-columns: 1fr 2fr;
+  gap: 12px;
+  border-top: 1px solid #e2e8f0;
+  background: #ffffff;
+}
+
+.screen-btn {
+  height: 40px;
+  border-radius: 6px;
+  font-size: 0.9rem;
+  font-weight: 600;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.2s;
+}
+
+.screen-btn-outline {
+  border: 1px solid #2563eb;
+  color: #2563eb;
+  background: #ffffff;
+}
+
+.screen-btn-outline:hover {
+  background: #eff6ff;
+}
+
+.screen-btn-primary {
+  border: none;
+  background: #0000ff;
+  /* Vibrant blue from image */
+  color: #ffffff;
+}
+
+.screen-btn-primary:hover {
+  background: #0000cc;
+}
+
+@media (max-width: 900px) {
+  .screen-modal {
+    flex-direction: column;
+    height: auto;
+    max-height: 95vh;
+    width: 95vw;
+    overflow-y: auto;
+  }
+
+  .screen-modal-left,
+  .screen-modal-right {
+    width: 100%;
+  }
+
+  .screen-modal-image-wrap {
+    min-height: 200px;
+  }
+}

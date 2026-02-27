@@ -1,0 +1,308 @@
+/* Billing & Invoices Styles */
+.billing-wrapper {
+    background-color: #F8FAFC;
+    min-height: 100vh;
+    padding-top: 104px;
+    padding-bottom: 40px;
+    font-family: 'Poppins', sans-serif !important;
+}
+
+.billing-container {
+    max-width: 98% !important;
+    margin: 0 auto;
+    padding: 0 24px !important;
+}
+
+.billing-wrapper * {
+    font-family: 'Poppins', sans-serif !important;
+}
+
+/* Header Section */
+.billing-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 32px;
+}
+
+.billing-title-section h1 {
+    font-size: 28px;
+    font-weight: 700;
+    color: #0F172A;
+    margin: 0;
+}
+
+.billing-subtitle {
+    font-size: 14px;
+    color: #64748B;
+    margin-top: 4px;
+}
+
+.billing-actions {
+    display: flex;
+    gap: 12px;
+}
+
+.btn-download-all {
+    background-color: #0F172A;
+    color: white;
+    border: none;
+    padding: 10px 24px;
+    border-radius: 10px;
+    font-weight: 700;
+    font-size: 13px;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+}
+
+/* Billing Summary Section */
+.billing-stats-row {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 24px;
+    margin-bottom: 32px;
+}
+
+.billing-stat-card {
+    background: white;
+    border: 1px solid #E2E8F0;
+    border-radius: 20px;
+    padding: 24px;
+}
+
+.stat-card-label {
+    font-size: 11px;
+    font-weight: 600;
+    color: #94A3B8;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    margin-bottom: 8px;
+}
+
+.stat-card-value {
+    font-size: 24px;
+    font-weight: 700;
+    color: #0F172A;
+}
+
+.stat-card-value.green {
+    color: #10B981;
+}
+
+.stat-card-value.orange {
+    color: #F97316;
+}
+
+/* Main Content Grid */
+.billing-grid {
+    display: grid;
+    grid-template-columns: 1fr 320px;
+    gap: 24px;
+}
+
+/* Invoices Card */
+.invoices-card {
+    background: white;
+    border: 1px solid #E2E8F0;
+    border-radius: 20px;
+    padding: 0;
+    overflow: hidden;
+}
+
+.invoices-card-header {
+    padding: 24px;
+    border-bottom: 1px solid #F1F5F9;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.invoices-card-header h3 {
+    font-size: 16px;
+    font-weight: 700;
+    color: #1E293B;
+    margin: 0;
+}
+
+.invoices-table {
+    margin: 0;
+}
+
+.invoices-table thead th {
+    background-color: #F8FAFC;
+    border-top: none;
+    border-bottom: 1px solid #F1F5F9;
+    padding: 16px 24px;
+    font-size: 11px;
+    font-weight: 700;
+    color: #64748B;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+}
+
+.invoices-table tbody td {
+    padding: 20px 24px;
+    vertical-align: middle;
+    font-size: 14px;
+    color: #1E293B;
+    border-bottom: 1px solid #F8FAFC;
+}
+
+.invoices-table tr:last-child td {
+    border-bottom: none;
+}
+
+.invoice-id-cell {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+}
+
+.invoice-icon-box {
+    width: 32px;
+    height: 32px;
+    background-color: #F8FAFC;
+    border-radius: 8px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #94A3B8;
+}
+
+.invoice-brand {
+    font-weight: 500;
+}
+
+.invoice-campaign {
+    color: #64748B;
+    font-size: 13px;
+}
+
+.invoice-amount {
+    font-weight: 700;
+    color: #0F172A;
+}
+
+.btn-download-invoice {
+    color: #2563EB;
+    text-decoration: none;
+    font-weight: 700;
+    font-size: 13px;
+    background: none;
+    border: none;
+    padding: 0;
+}
+
+/* Sidebar Cards */
+.sidebar-billing {
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
+}
+
+.payment-method-card {
+    background: white;
+    border: 1px solid #E2E8F0;
+    border-radius: 20px;
+    padding: 24px;
+}
+
+.sidebar-title {
+    font-size: 14px;
+    font-weight: 700;
+    color: #1E293B;
+    margin-bottom: 20px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.method-item {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    padding: 16px;
+    border: 1px solid #F1F5F9;
+    border-radius: 12px;
+    margin-bottom: 12px;
+}
+
+.card-icon {
+    font-size: 24px;
+    color: #475569;
+}
+
+.card-info .label {
+    font-size: 13px;
+    font-weight: 600;
+    color: #1E293B;
+}
+
+.card-info .sub {
+    font-size: 11px;
+    color: #94A3B8;
+}
+
+.btn-add-method {
+    width: 100%;
+    background-color: #F8FAFC;
+    border: 1px dashed #CBD5E1;
+    color: #64748B;
+    padding: 12px;
+    border-radius: 12px;
+    font-size: 13px;
+    font-weight: 600;
+    margin-top: 8px;
+}
+
+.auto-pay-banner {
+    background-color: #EFF6FF;
+    border-radius: 16px;
+    padding: 20px;
+    display: flex;
+    gap: 12px;
+}
+
+.auto-pay-icon {
+    color: #2563EB;
+    font-size: 20px;
+}
+
+.auto-pay-content h4 {
+    font-size: 14px;
+    font-weight: 700;
+    color: #1E293B;
+    margin-bottom: 4px;
+}
+
+.auto-pay-content p {
+    font-size: 12px;
+    color: #64748B;
+    margin: 0;
+    line-height: 1.5;
+}
+
+/* Responsive */
+@media (max-width: 1200px) {
+    .billing-stats-row {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    .billing-grid {
+        grid-template-columns: 1fr;
+    }
+}
+
+@media (max-width: 768px) {
+    .billing-stats-row {
+        grid-template-columns: 1fr;
+    }
+
+    .billing-header {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 20px;
+    }
+}

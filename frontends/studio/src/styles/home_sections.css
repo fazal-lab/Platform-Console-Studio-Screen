@@ -1,0 +1,233 @@
+/* ============================================
+   Features Sections (Advertiser & Media Owner)
+   ============================================ */
+.features-section {
+    padding: 80px 0;
+}
+
+.bg-light-gray {
+    background-color: #f9f9f9;
+}
+
+.feature-heading-small {
+    font-size: 32px;
+    font-weight: 700;
+    margin-bottom: 16px;
+    color: #1a1a1a;
+}
+
+.feature-intro {
+    font-size: 16px;
+    color: #555;
+    margin-bottom: 24px;
+    max-width: 500px;
+}
+
+.custom-btn-primary {
+    background-color: #0066ff;
+    color: #fff;
+    border: none;
+    padding: 10px 24px;
+    border-radius: 6px;
+    font-weight: 600;
+    text-decoration: none;
+    display: inline-block;
+}
+
+.custom-btn-primary:hover {
+    background-color: #0052cc;
+    color: #fff;
+}
+
+.feature-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 32px;
+    margin-top: 40px;
+}
+
+.feature-item-card {
+    text-align: left;
+}
+
+.feature-icon-wrapper {
+    width: 56px;
+    height: 56px;
+    background: #eff6ff;
+    border-radius: 50%;
+    /* Circle */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 20px;
+    color: #0066ff;
+    font-size: 24px;
+}
+
+.feature-card-title {
+    font-size: 18px;
+    font-weight: 700;
+    margin-bottom: 8px;
+    color: #1a1a1a;
+}
+
+.feature-card-desc {
+    font-size: 14px;
+    color: #666;
+    line-height: 1.6;
+}
+
+/* ============================================
+   Intelligence Layer Section
+   ============================================ */
+.intelligence-section {
+    padding: 80px 0;
+    text-align: center;
+}
+
+.intelligence-content-wrapper {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-top: 50px;
+    gap: 40px;
+    position: relative;
+}
+
+.intel-feature-list {
+    text-align: left;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.intel-item {
+    display: flex;
+    align-items: center;
+    font-size: 15px;
+    color: #333;
+    font-weight: 500;
+}
+
+.intel-icon {
+    color: #0066ff;
+    margin-right: 12px;
+    width: 20px;
+    text-align: center;
+}
+
+.intel-center-image {
+    flex: 1;
+    max-width: 600px;
+    position: relative;
+    background: #f1f5f9;
+    height: 350px;
+    border-radius: 12px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.play-button {
+    width: 60px;
+    height: 60px;
+    background: #fff;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    cursor: pointer;
+    color: #0066ff;
+    font-size: 24px;
+}
+
+/* ============================================
+   DOOH Section (Programmable)
+   ============================================ */
+.dooh-section {
+    padding: 60px 0;
+}
+
+.dooh-card-dark {
+    background-color: #0f172a;
+    border-radius: 20px;
+    color: #fff;
+    padding: 60px;
+    position: relative;
+    overflow: hidden;
+    background-image: linear-gradient(110deg, #0f172a 0%, #1e293b 100%);
+}
+
+.dooh-badge {
+    background: rgba(255, 255, 255, 0.1);
+    padding: 6px 12px;
+    border-radius: 4px;
+    font-size: 12px;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    margin-bottom: 24px;
+    display: inline-block;
+    font-weight: 600;
+}
+
+.dooh-title {
+    font-size: 40px;
+    font-weight: 700;
+    margin-bottom: 24px;
+}
+
+.dooh-desc {
+    color: #94a3b8;
+    font-size: 18px;
+    max-width: 500px;
+    margin-bottom: 40px;
+    line-height: 1.6;
+}
+
+.dooh-tags {
+    display: flex;
+    gap: 12px;
+    flex-wrap: wrap;
+}
+
+.dooh-tag {
+    background: rgba(255, 255, 255, 0.1);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    padding: 8px 16px;
+    border-radius: 20px;
+    font-size: 14px;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+/* Responsive Grid adjustments */
+@media (max-width: 992px) {
+    .feature-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    .intelligence-content-wrapper {
+        flex-direction: column;
+    }
+
+    .intel-center-image {
+        width: 100%;
+        margin: 30px 0;
+    }
+}
+
+@media (max-width: 768px) {
+    .feature-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .dooh-card-dark {
+        padding: 30px;
+    }
+
+    .dooh-title {
+        font-size: 28px;
+    }
+}

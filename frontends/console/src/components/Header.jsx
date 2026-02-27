@@ -35,7 +35,7 @@ const Header = () => {
 
     const fetchNotifSummary = async () => {
         try {
-            const screensRes = await axios.get('http://192.168.31.226:8000/api/console/screens/external-submit/');
+            const screensRes = await axios.get('/api/console/screens/external-submit/');
             const allScreens = screensRes.data.screens || [];
             const pendingScreens = allScreens.filter(s =>
                 s.status === 'PENDING' || s.status === 'RESUBMITTED' || s.status === 'SUBMITTED'

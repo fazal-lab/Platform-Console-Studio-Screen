@@ -31,7 +31,7 @@ const ScreensListPage = () => {
         setLoading(true);
         try {
             // Using axios directly for hardcoded IP to avoid api.js interceptors/baseURL
-            const response = await axios.get('http://192.168.31.226:8000/api/console/screens/external-submit/');
+            const response = await axios.get('/api/console/screens/external-submit/');
             const allScreens = response.data.screens || [];
 
             const today = new Date();
@@ -325,7 +325,7 @@ const ScreensListPage = () => {
                                                     onClick={(e) => {
                                                         e.stopPropagation();
                                                         if (window.confirm(`Delete draft "${screen.name}"? This cannot be undone.`)) {
-                                                            axios.delete(`http://192.168.31.226:8000/api/console/screens/external-submit/${screen.id}/`)
+                                                            axios.delete(`/api/console/screens/external-submit/${screen.id}/`)
                                                                 .then(() => fetchData())
                                                                 .catch(err => {
                                                                     console.error('Delete failed:', err);

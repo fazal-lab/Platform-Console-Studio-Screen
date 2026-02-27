@@ -1,0 +1,183 @@
+/* Section Styling */
+.ad-section-static {
+    padding: 60px 0;
+    background-color: #ffffff;
+    text-align: center;
+}
+.ad-section-static .container {
+    width: 100%;
+    max-width: 1400px;
+    margin: 0 auto;
+    padding: 0 20px;
+}
+
+/* Title */
+.ad-title {
+    font-size: 2.2rem;
+    font-weight: 600;
+    margin-bottom: 20px;
+    color: #000;
+    text-align: center;
+    font-family: 'Poppins', sans-serif;
+}
+
+.ad-description {
+    font-weight: 500;
+    color: #000;
+    font-family: "DM Sans", sans-serif;
+    line-height: 1.6;
+    font-size: 18px;
+    margin-bottom: 40px;
+}
+
+/* Grid Layout */
+.ad-cards {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+
+/* Card Wrapper */
+.ad-card-container {
+    display: flex;
+    justify-content: center;
+    padding: 10px;
+}
+
+/* Large Cards */
+.card-consumer, .card-exclusive{
+    width: 100%;
+    max-width: 400px;
+    height: 430px !important;
+    padding: 20px;
+    text-align: left;
+    background: #fff;
+    border-radius: 12px;
+    box-shadow: 4px 4px 10px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s ease-in-out;
+
+}
+.card-mobile {
+    width: 100%;
+    max-width: 400px;
+    height: 430px !important;
+    padding: 20px;
+    text-align: left;
+    background: #fff;
+    border-radius: 12px;
+    box-shadow: 4px 4px 10px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s ease-in-out;
+    margin-top: -130px;
+}
+
+/* Medium Cards */
+.card-flexible{
+    width: 100%;
+    max-width: 400px;
+    height: 300px !important;
+    padding: 20px;
+    text-align: left;
+    background: #fff;
+    border-radius: 20px;
+    box-shadow: 4px 4px 10px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s ease-in-out;
+}
+
+/* Small Cards */
+.card-prime, .card-cost-effective {
+    width: 100%;
+    max-width: 400px;
+    height: 300px !important;
+    padding: 20px;
+    text-align: left;
+    background: #fff;
+    border-radius: 20px;
+    box-shadow: 4px 4px 10px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s ease-in-out;
+}
+
+.card-consumer:hover, .card-exclusive:hover, .card-mobile:hover,
+.card-flexible:hover, .card-prime:hover, .card-cost-effective:hover {
+    transform: translateY(-5px);
+}
+
+/* Card Title */
+.card-consumer .card-title, .card-exclusive .card-title, .card-mobile .card-title,
+.card-flexible .card-title, .card-prime .card-title, .card-cost-effective .card-title {
+    font-size: 1.2rem;
+    font-weight: 600;
+    color: #000;
+}
+
+/* Card Text */
+.card-consumer .card-text, .card-exclusive .card-text, .card-mobile .card-text,
+.card-flexible .card-text, .card-prime .card-text, .card-cost-effective .card-text {
+    font-size: 1rem;
+    color: #555;
+}
+.icon-consumer-img {
+    width: 300px;
+    height: 300px;
+    display: flex
+;
+    justify-content: center;
+    align-items: center;
+    margin: 0 auto;
+    margin-top: -40px;
+}
+
+.icon-flexible-img {
+    width: 250px;
+    height: 150px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 0 auto;
+    margin-top: -6px;
+}
+
+.icon-exclusive-img {
+    width: 250px;
+    height: 250px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 0 auto;
+    margin-bottom: 10px;
+}
+
+.icon-prime-img {
+    width: 250px;
+    height: 300px;
+    display: flex
+;
+    justify-content: center;
+    align-items: center;
+    margin: 0 auto;
+    margin-top: -80px;
+    margin-bottom: -77px;
+}
+.icon-mobile-img {
+    width: 280px;
+    height: 250px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 0 auto;
+}
+
+.icon-cost-effective-img {
+    width: 250px;
+    height: 130px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 0 auto;
+}
+
+/* Row Adjustment */
+.ad-section-static .row {
+    --bs-gutter-x: -10px;
+}
+
+

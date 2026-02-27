@@ -9,9 +9,9 @@ import {
 import api from '../utils/api';
 import axios from 'axios';
 
-// ─── Dashboard API (Platform backend) ───
+// ─── Dashboard API (Platform backend - Studio routes) ───
 const dashboardApi = axios.create({
-    baseURL: 'http://192.168.31.238:8000/api/',
+    baseURL: '/api/studio/',
     headers: { 'Content-Type': 'application/json' },
 });
 
@@ -41,8 +41,9 @@ const CampaignLivePage = () => {
     const fetchCampaigns = async () => {
         setLoading(true);
         try {
-            const res = await dashboardApi.get('campaigns/');
-            setCampaigns(res.data?.results || res.data || []);
+            const res = await dashboardApi.get('dashboard/overview/');
+            const allCampaigns = res.data?.data?.campaigns || [];
+            setCampaigns(allCampaigns);
         } catch (err) {
             console.error('Failed to fetch campaigns', err);
         } finally {

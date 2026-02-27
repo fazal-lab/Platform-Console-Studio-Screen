@@ -1,0 +1,214 @@
+/* Global Defaults & Resets for Landing Page */
+.landing-page-v2 {
+  font-family: 'Inter', 'Poppins', sans-serif;
+  color: #1a1a1a;
+  padding-bottom: 80px;
+  background-color: #ffffff;
+}
+
+.highlight-text {
+  color: #2563eb;
+  /* Tailored blue to match screenshot */
+}
+
+/* ============================================
+   Hero Section
+   ============================================ */
+.hero-section {
+  padding: 100px 0 60px;
+  background: linear-gradient(180deg, #f0f8ff 0%, #ffffff 100%);
+  position: relative;
+  overflow: hidden;
+}
+
+.hero-title {
+  font-size: 56px;
+  font-weight: 700;
+  line-height: 1.25;
+  margin-bottom: 24px;
+  /* Increased slightly for spacing */
+  letter-spacing: -0.5px;
+  color: #1a1a1a;
+  /* Adjusted to solid dark grey/black */
+}
+
+.hero-subtitle {
+  font-size: 18px;
+  /* Slightly larger for readability */
+  color: #1a1a1a;
+  /* Solid black */
+  font-weight: 500;
+  max-width: 800px;
+  /* Wider to allow text to spread */
+  margin: 0 auto 40px;
+  /* Increased bottom margin */
+  line-height: 1.5;
+}
+
+.hero-buttons {
+  display: flex;
+  gap: 16px;
+  justify-content: center;
+  margin-bottom: 50px;
+}
+
+.btn-main {
+  background-color: #2563eb;
+  /* Matches Primary Blue */
+  border-color: #2563eb;
+  padding: 12px 32px;
+  font-weight: 600;
+  border-radius: 6px;
+  /* Tighter radius */
+  transition: all 0.3s ease;
+  font-size: 15px;
+}
+
+.btn-main:hover {
+  background-color: #0052cc;
+  border-color: #0052cc;
+}
+
+.btn-secondary {
+  background-color: #ffffff;
+  color: #2563eb;
+  border: 1px solid #e5e7eb;
+  padding: 12px 32px;
+  font-weight: 600;
+  border-radius: 6px;
+  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.05);
+  font-size: 15px;
+}
+
+.btn-secondary:hover {
+  background-color: #f9fafb;
+  border-color: #d1d5db;
+  color: #1d4ed8;
+}
+
+.talk-to-sales-link {
+  color: #2563eb;
+  font-weight: 600;
+  text-decoration: none;
+  margin-top: 20px;
+  display: inline-block;
+  transition: all 0.2s;
+  font-size: 14px;
+  /* Matches screenshot small text */
+}
+
+.talk-to-sales-link:hover {
+  text-decoration: underline;
+  color: #0052cc;
+}
+
+.hero-image-wrapper {
+  max-width: 1000px;
+  margin: 0 auto;
+  position: relative;
+}
+
+/* ============================================
+   Value Prop Section (What is Xigi?)
+   ============================================ */
+.value-prop-section {
+  padding: 80px 0;
+}
+
+.section-title {
+  font-size: 36px;
+  font-weight: 700;
+  margin-bottom: 20px;
+  color: #1a1a1a;
+}
+
+.section-desc {
+  font-size: 18px;
+  color: #555;
+  line-height: 1.6;
+  margin-bottom: 24px;
+}
+
+.feature-list {
+  list-style: none;
+  padding: 0;
+}
+
+.feature-list-item {
+  display: flex;
+  align-items: center;
+  margin-bottom: 12px;
+  font-size: 16px;
+  color: #333;
+}
+
+.check-icon {
+  color: #0066ff;
+  margin-right: 12px;
+  font-weight: bold;
+}
+
+/* ============================================
+   User Types Section (Who Are You?)
+   ============================================ */
+.user-type-section {
+  padding: 60px 0;
+  background-color: #ffffff;
+}
+
+.user-type-card {
+  background: #f8fbff;
+  border: 1px solid #e1e4e8;
+  border-radius: 16px;
+  padding: 40px;
+  height: 100%;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.user-type-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05);
+  border-color: #0066ff;
+}
+
+.card-label {
+  font-size: 20px;
+  font-weight: 700;
+  margin-bottom: 12px;
+  color: #1a1a1a;
+}
+
+.card-desc {
+  font-size: 16px;
+  color: #666;
+  margin-bottom: 24px;
+  min-height: 48px;
+}
+
+.card-link {
+  color: #0066ff;
+  text-decoration: none;
+  font-weight: 600;
+  display: inline-flex;
+  align-items: center;
+}
+
+.card-link:hover {
+  text-decoration: underline;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .hero-title {
+    font-size: 36px;
+  }
+
+  .hero-buttons {
+    flex-direction: column;
+    padding: 0 20px;
+  }
+
+  .section-title {
+    font-size: 28px;
+  }
+}

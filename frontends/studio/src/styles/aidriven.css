@@ -1,0 +1,89 @@
+/* Section Styling */
+.ai-driven-static {
+    padding: 60px 0;
+    background-color: #f9f9ff;
+    text-align: center;
+}
+
+
+/* Title */
+.section-title {
+    font-size: 2.2rem;
+    font-weight: 600;
+    margin-bottom: 40px;
+    color: #000;
+    text-align: center;
+    font-family: 'Poppins', sans-serif;
+
+}
+
+/* Feature Box */
+.feature-box1 {
+    display: flex;
+    align-items: center;
+    background: #fff;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
+    height: 160px; /* ✅ Increased height */
+    width: 100%; /* ✅ Full width of column */
+    border: 1px solid #d3d4d6; /* ✅ Border color added */
+
+}
+
+/* Column and Row Spacing */
+.gx-4 {
+    --bs-gutter-x: 40px; /* ✅ Equal column gap */
+}
+
+.gy-4 {
+    --bs-gutter-y: 30px; /* ✅ Equal row gap */
+}
+
+/* Feature Icon */
+.feature-icon1 {
+    flex-shrink: 0;
+    background: #f5f5f5;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 70px;
+    height: 70px;
+    margin-right: 15px;
+    
+}
+
+.feature-icon1 img {
+    width: 40px;
+    height: 40px;
+}
+
+/* Feature Content */
+.feature-content1 {
+    text-align: left;
+    flex: 1;
+    font-family: 'Poppins', sans-serif;
+
+}
+
+.feature-content1 h4 {
+    font-size: 1.2rem;
+    font-weight: 600;
+    margin-bottom: 5px;
+    color: blue;
+    font-family: 'Poppins', sans-serif;
+
+}
+
+.feature-content1 p {
+    font-size: 1rem;
+    color: #666;
+    margin: 0;
+    font-family: "DM Sans", sans-serif;
+    padding-top: 5px;
+
+}
+
+
+

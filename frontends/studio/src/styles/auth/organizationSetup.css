@@ -1,0 +1,135 @@
+@import url('https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600;700&display=swap');
+
+.org-setup-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    background-color: #fff;
+    font-family: 'Outfit', sans-serif;
+}
+
+.org-setup-card {
+    width: 600px;
+    padding: 40px;
+    background: #fff;
+    /* Optional: add a subtle shadow or border if needed, 
+       but the image looks very clean/flat or maybe just a centered layout. 
+       Let's assume it's just a clean layout on a white background for now, 
+       or maybe a very light border. */
+    border: 1px solid #E5E7EB;
+    border-radius: 8px;
+}
+
+.back-link {
+    display: flex;
+    align-items: center;
+    text-decoration: none;
+    color: #000 !important;
+    font-size: 14px;
+    font-weight: 500;
+    margin-bottom: 24px;
+    cursor: pointer;
+    font-family: 'Manrope', sans-serif;
+    transition: none;
+}
+
+.back-link:hover {
+    text-decoration: none !important;
+    color: #000 !important;
+}
+
+.back-link svg {
+    margin-right: 2px;
+    color: #000 !important;
+    display: inline-block;
+    vertical-align: middle;
+}
+
+.org-setup-title {
+    font-size: 24px;
+    font-weight: 600;
+    margin-bottom: 8px;
+    color: #111;
+    font-family: 'Poppins', sans-serif;
+}
+
+.org-setup-description {
+    font-size: 15px;
+    color: #000;
+    /* Gray-600 */
+    margin-bottom: 32px;
+    font-family: 'Manrope', sans-serif;
+    font-weight: 500;
+}
+
+.form-group {
+    margin-bottom: 24px;
+}
+
+.form-label {
+    display: block;
+    font-size: 15px;
+    font-weight: 700;
+    margin-bottom: 8px;
+    color: #111;
+    font-family: 'Manrope', sans-serif;
+}
+
+.form-control {
+    width: 100%;
+    height: 46px;
+    padding: 12px 16px;
+    border: 1px solid #E5E7EB;
+    border-radius: 8px;
+    font-size: 15px;
+    color: #111;
+    outline: none;
+    transition: border-color 0.2s;
+    font-family: 'Manrope', sans-serif;
+}
+
+.form-control:focus {
+    border-color: #0000ff;
+}
+
+.form-control::placeholder {
+    color: #999;
+    font-size: 13px;
+}
+
+textarea.form-control {
+    height: auto;
+    min-height: 100px;
+}
+
+.helper-text {
+    font-size: 12px;
+    color: #6B7280;
+    margin-top: 6px;
+    font-family: 'Manrope', sans-serif;
+}
+
+.submit-btn {
+    background-color: #0000FF;
+    /* Bright blue from image */
+    color: white;
+    border: none;
+    padding: 12px 24px;
+    border-radius: 6px;
+    font-size: 14px;
+    font-weight: 600;
+    cursor: pointer;
+    float: right;
+    transition: background-color 0.2s;
+}
+
+.submit-btn:hover {
+    background-color: #0000DD;
+}
+
+.clearfix::after {
+    content: "";
+    clear: both;
+    display: table;
+}

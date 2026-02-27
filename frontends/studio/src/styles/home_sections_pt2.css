@@ -1,0 +1,149 @@
+/* ============================================
+   Platform Snapshot & Use Cases
+   ============================================ */
+.platform-snapshot-section {
+    padding: 80px 0;
+    text-align: center;
+}
+
+.use-case-section {
+    padding: 60px 0 80px;
+    background: #f8fbff;
+}
+
+.use-case-card {
+    background: #fff;
+    border-radius: 12px;
+    overflow: hidden;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.05);
+    height: 100%;
+    border: 1px solid #eee;
+}
+
+.use-case-img-placeholder {
+    height: 200px;
+    background: #eef2f6;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #999;
+    font-size: 14px;
+}
+
+.use-case-content {
+    padding: 24px;
+    text-align: left;
+}
+
+.use-case-title {
+    font-size: 20px;
+    font-weight: 700;
+    margin-bottom: 16px;
+    color: #1a1a1a;
+}
+
+.use-case-list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.use-case-item {
+    display: flex;
+    align-items: flex-start;
+    margin-bottom: 12px;
+    font-size: 14px;
+    color: #444;
+}
+
+.use-case-icon {
+    color: #0066ff;
+    margin-right: 10px;
+    margin-top: 2px;
+}
+
+/* ============================================
+   Testimonials & Final CTA
+   ============================================ */
+.testimonials-section {
+    padding: 80px 0;
+    background: #fff;
+}
+
+.testimonial-card-simple {
+    padding: 30px;
+    background: #f9fafb;
+    border-radius: 12px;
+    border: 1px solid #f0f0f0;
+}
+
+.quote-text {
+    font-size: 18px;
+    font-style: italic;
+    color: #333;
+    line-height: 1.6;
+    margin-bottom: 24px;
+}
+
+.author-block {
+    display: flex;
+    align-items: center;
+}
+
+.author-avatar {
+    width: 48px;
+    height: 48px;
+    border-radius: 50%;
+    background: #ccc;
+    margin-right: 16px;
+}
+
+.author-name {
+    font-weight: 700;
+    color: #1a1a1a;
+    font-size: 16px;
+}
+
+.author-role {
+    font-size: 14px;
+    color: #666;
+}
+
+.final-cta-section {
+    padding: 80px 0;
+    text-align: center;
+    background: #fff;
+}
+
+.cta-box-wrapper {
+    display: flex;
+    justify-content: center;
+    gap: 30px;
+}
+
+.cta-blue-box {
+    background: #0066ff;
+    border-radius: 16px;
+    padding: 40px;
+    text-align: left;
+    color: #fff;
+    flex: 1;
+    max-width: 500px;
+}
+
+.cta-light-box {
+    background: #f0f8ff;
+    border-radius: 16px;
+    padding: 40px;
+    text-align: left;
+    flex: 1;
+    max-width: 500px;
+}
+
+.cta-box-label {
+    font-size: 12px;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    margin-bottom: 16px;
+    opacity: 0.8;
+}

@@ -1,0 +1,1307 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>XIA Debug Dashboard</title>
+  <link
+    href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap"
+    rel="stylesheet">
+  <style>
+    :root {
+      --bg: #0a0a0f;
+      --surface: #12121a;
+      --surface2: #1a1a25;
+      --border: #2a2a3a;
+      --text: #e0e0e8;
+      --text2: #8888a0;
+      --accent: #6c5ce7;
+      --accent2: #a29bfe;
+      --green: #00d68f;
+      --orange: #f0932b;
+      --red: #ff4757;
+      --blue: #0984e3;
+      --cyan: #00cec9;
+      --yellow: #feca57;
+    }
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: 'Inter', sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      min-height: 100vh;
+    }
+
+    /* Header */
+    .header {
+      background: linear-gradient(135deg, var(--surface) 0%, #15152a 100%);
+      border-bottom: 1px solid var(--border);
+      padding: 16px 24px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      position: sticky;
+      top: 0;
+      z-index: 100;
+    }
+
+    .header h1 {
+      font-size: 18px;
+      font-weight: 700;
+      background: linear-gradient(135deg, var(--accent2), var(--cyan));
+      -webkit-background-clip: text;
+      background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+
+    .header .badge {
+      font-size: 11px;
+      background: var(--accent);
+      color: white;
+      padding: 3px 10px;
+      border-radius: 20px;
+      font-weight: 600;
+    }
+
+    /* Layout */
+    .layout {
+      display: grid;
+      grid-template-columns: 380px 1fr;
+      height: calc(100vh - 56px);
+    }
+
+    /* Left panel - Chat */
+    .chat-panel {
+      border-right: 1px solid var(--border);
+      display: flex;
+      flex-direction: column;
+      background: var(--surface);
+    }
+
+    .gateway-form {
+      padding: 16px;
+      border-bottom: 1px solid var(--border);
+    }
+
+    .gateway-form h3 {
+      font-size: 12px;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      color: var(--text2);
+      margin-bottom: 10px;
+    }
+
+    .form-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 8px;
+    }
+
+    .form-grid input,
+    .form-grid select {
+      background: var(--bg);
+      border: 1px solid var(--border);
+      color: var(--text);
+      padding: 8px 10px;
+      border-radius: 6px;
+      font-size: 12px;
+      font-family: 'Inter', sans-serif;
+    }
+
+    .form-grid input:focus {
+      outline: none;
+      border-color: var(--accent);
+    }
+
+    .form-grid .full {
+      grid-column: span 2;
+    }
+
+    .chat-messages {
+      flex: 1;
+      overflow-y: auto;
+      padding: 16px;
+    }
+
+    .msg {
+      margin-bottom: 12px;
+      animation: fadeIn 0.3s ease;
+    }
+
+    @keyframes fadeIn {
+      from {
+        opacity: 0;
+        transform: translateY(8px);
+      }
+
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    .msg.user .bubble {
+      background: var(--accent);
+      color: white;
+      margin-left: 40px;
+      border-radius: 14px 14px 4px 14px;
+    }
+
+    .msg.assistant .bubble {
+      background: var(--surface2);
+      margin-right: 40px;
+      border-radius: 14px 14px 14px 4px;
+    }
+
+    .bubble {
+      padding: 10px 14px;
+      font-size: 13px;
+      line-height: 1.5;
+    }
+
+    .msg .meta-line {
+      font-size: 10px;
+      color: var(--text2);
+      margin-top: 4px;
+      padding: 0 4px;
+    }
+
+    .quick-replies-bar {
+      display: flex;
+      gap: 6px;
+      flex-wrap: wrap;
+      margin-top: 8px;
+      padding: 0 4px;
+    }
+
+    .qr-btn {
+      background: var(--surface);
+      border: 1px solid var(--accent);
+      color: var(--accent2);
+      padding: 5px 12px;
+      border-radius: 20px;
+      font-size: 11px;
+      cursor: pointer;
+      transition: all 0.2s;
+    }
+
+    .qr-btn:hover {
+      background: var(--accent);
+      color: white;
+    }
+
+    .chat-input-area {
+      padding: 12px 16px;
+      border-top: 1px solid var(--border);
+      display: flex;
+      gap: 8px;
+    }
+
+    .chat-input-area input {
+      flex: 1;
+      background: var(--bg);
+      border: 1px solid var(--border);
+      color: var(--text);
+      padding: 10px 14px;
+      border-radius: 10px;
+      font-size: 13px;
+      font-family: 'Inter', sans-serif;
+    }
+
+    .chat-input-area input:focus {
+      outline: none;
+      border-color: var(--accent);
+    }
+
+    .chat-input-area button {
+      background: linear-gradient(135deg, var(--accent), #5a4bd1);
+      color: white;
+      border: none;
+      padding: 10px 20px;
+      border-radius: 10px;
+      cursor: pointer;
+      font-weight: 600;
+      font-size: 13px;
+      transition: transform 0.15s;
+    }
+
+    .chat-input-area button:hover {
+      transform: scale(1.03);
+    }
+
+    .chat-input-area button:disabled {
+      opacity: 0.5;
+      cursor: not-allowed;
+      transform: none;
+    }
+
+    /* Right panel - Debug */
+    .debug-panel {
+      overflow-y: auto;
+      padding: 20px;
+    }
+
+    /* Pipeline visualizer */
+    .pipeline {
+      display: flex;
+      align-items: center;
+      gap: 4px;
+      margin-bottom: 20px;
+      flex-wrap: wrap;
+    }
+
+    .pipe-step {
+      padding: 6px 16px;
+      border-radius: 20px;
+      font-size: 11px;
+      font-weight: 600;
+      background: var(--surface2);
+      color: var(--text2);
+      border: 1px solid var(--border);
+      transition: all 0.3s;
+    }
+
+    .pipe-step.active {
+      border-color: var(--green);
+      color: var(--green);
+      background: rgba(0, 214, 143, 0.08);
+    }
+
+    .pipe-step.skipped {
+      border-color: var(--text2);
+      opacity: 0.5;
+    }
+
+    .pipe-arrow {
+      color: var(--text2);
+      font-size: 14px;
+    }
+
+    /* Timing bar */
+    .timing-bar {
+      display: flex;
+      height: 28px;
+      border-radius: 8px;
+      overflow: hidden;
+      margin-bottom: 20px;
+      background: var(--surface2);
+    }
+
+    .timing-seg {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 10px;
+      font-weight: 600;
+      color: white;
+      min-width: 40px;
+      transition: all 0.5s;
+    }
+
+    .timing-seg.c1 {
+      background: var(--blue);
+    }
+
+    .timing-seg.disc {
+      background: var(--cyan);
+    }
+
+    .timing-seg.c2 {
+      background: var(--orange);
+    }
+
+    .timing-seg.c3 {
+      background: var(--accent);
+    }
+
+    /* Call cards */
+    .call-card {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      margin-bottom: 16px;
+      overflow: hidden;
+    }
+
+    .call-card-header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 12px 16px;
+      cursor: pointer;
+      user-select: none;
+      transition: background 0.2s;
+    }
+
+    .call-card-header:hover {
+      background: var(--surface2);
+    }
+
+    .call-card-header .title {
+      font-size: 13px;
+      font-weight: 600;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .call-card-header .dot {
+      width: 8px;
+      height: 8px;
+      border-radius: 50%;
+      display: inline-block;
+    }
+
+    .call-card-header .badges {
+      display: flex;
+      gap: 6px;
+      align-items: center;
+    }
+
+    .call-card-header .stat {
+      font-size: 10px;
+      padding: 2px 8px;
+      border-radius: 10px;
+      background: var(--surface2);
+      color: var(--text2);
+    }
+
+    .call-card-body {
+      border-top: 1px solid var(--border);
+      max-height: 0;
+      overflow: hidden;
+      transition: max-height 0.4s ease;
+    }
+
+    .call-card-body.open {
+      max-height: 4000px;
+    }
+
+    .call-card-body .tabs {
+      display: flex;
+      border-bottom: 1px solid var(--border);
+      padding: 0 16px;
+    }
+
+    .call-card-body .tab {
+      padding: 8px 16px;
+      font-size: 11px;
+      font-weight: 600;
+      color: var(--text2);
+      cursor: pointer;
+      border-bottom: 2px solid transparent;
+      transition: all 0.2s;
+    }
+
+    .call-card-body .tab.active {
+      color: var(--accent2);
+      border-color: var(--accent);
+    }
+
+    .tab-content {
+      padding: 16px;
+      display: none;
+    }
+
+    .tab-content.active {
+      display: block;
+    }
+
+    pre.prompt-block {
+      background: var(--bg);
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      padding: 14px;
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 11px;
+      line-height: 1.6;
+      overflow-x: auto;
+      white-space: pre-wrap;
+      word-break: break-word;
+      color: var(--text);
+      max-height: 500px;
+      overflow-y: auto;
+    }
+
+    .json-block {
+      background: var(--bg);
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      padding: 14px;
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 11px;
+      line-height: 1.6;
+      overflow-x: auto;
+      white-space: pre-wrap;
+      color: var(--text);
+      max-height: 400px;
+      overflow-y: auto;
+    }
+
+    /* Extracted data */
+    .data-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 10px;
+    }
+
+    .data-item {
+      background: var(--bg);
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      padding: 10px 14px;
+    }
+
+    .data-item .label {
+      font-size: 10px;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+      color: var(--text2);
+      margin-bottom: 4px;
+    }
+
+    .data-item .value {
+      font-size: 13px;
+      font-weight: 600;
+      color: var(--text);
+    }
+
+    /* Session info */
+    .session-bar {
+      font-size: 11px;
+      color: var(--text2);
+      padding: 8px 16px;
+      background: var(--bg);
+      border-bottom: 1px solid var(--border);
+      display: flex;
+      gap: 8px;
+      align-items: center;
+      flex-wrap: wrap;
+    }
+
+    .session-bar span {
+      font-family: 'JetBrains Mono', monospace;
+      color: var(--cyan);
+    }
+
+    .load-session-row {
+      display: flex;
+      gap: 6px;
+      align-items: center;
+      margin-left: auto;
+    }
+
+    .load-session-row input {
+      background: var(--surface2);
+      border: 1px solid var(--border);
+      color: var(--text);
+      padding: 4px 8px;
+      border-radius: 6px;
+      font-size: 11px;
+      font-family: 'JetBrains Mono', monospace;
+      width: 260px;
+    }
+
+    .load-session-row input:focus {
+      outline: none;
+      border-color: var(--cyan);
+    }
+
+    .load-session-row input::placeholder {
+      color: var(--text2);
+    }
+
+    .load-btn {
+      background: var(--cyan);
+      color: var(--bg);
+      border: none;
+      padding: 4px 12px;
+      border-radius: 6px;
+      font-size: 11px;
+      font-weight: 600;
+      cursor: pointer;
+      transition: opacity 0.2s;
+    }
+
+    .load-btn:hover {
+      opacity: 0.85;
+    }
+
+    .load-btn:disabled {
+      opacity: 0.4;
+      cursor: not-allowed;
+    }
+
+    .loaded-badge {
+      font-size: 10px;
+      background: rgba(0, 206, 201, 0.15);
+      color: var(--cyan);
+      padding: 2px 8px;
+      border-radius: 10px;
+      font-weight: 600;
+    }
+
+    .live-badge {
+      font-size: 10px;
+      background: rgba(0, 214, 143, 0.15);
+      color: var(--green);
+      padding: 2px 8px;
+      border-radius: 10px;
+      font-weight: 600;
+      cursor: pointer;
+      display: inline-flex;
+      align-items: center;
+      gap: 4px;
+    }
+
+    .live-badge .pulse {
+      width: 6px;
+      height: 6px;
+      border-radius: 50%;
+      background: var(--green);
+      animation: livePulse 1.5s ease-in-out infinite;
+    }
+
+    @keyframes livePulse {
+
+      0%,
+      100% {
+        opacity: 1;
+        transform: scale(1);
+      }
+
+      50% {
+        opacity: 0.4;
+        transform: scale(0.7);
+      }
+    }
+
+    .live-badge.paused {
+      color: var(--text2);
+      background: var(--surface2);
+    }
+
+    .live-badge.paused .pulse {
+      background: var(--text2);
+      animation: none;
+    }
+
+    /* Loading */
+    .spinner {
+      display: inline-block;
+      width: 16px;
+      height: 16px;
+      border: 2px solid var(--border);
+      border-top-color: var(--accent);
+      border-radius: 50%;
+      animation: spin 0.8s linear infinite;
+    }
+
+    @keyframes spin {
+      to {
+        transform: rotate(360deg);
+      }
+    }
+
+    .waiting-msg {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      padding: 10px 14px;
+      font-size: 12px;
+      color: var(--text2);
+    }
+
+    .empty-state {
+      text-align: center;
+      padding: 80px 40px;
+      color: var(--text2);
+    }
+
+    .empty-state .icon {
+      font-size: 48px;
+      margin-bottom: 16px;
+    }
+
+    .empty-state h3 {
+      font-size: 16px;
+      color: var(--text);
+      margin-bottom: 8px;
+    }
+
+    .empty-state p {
+      font-size: 13px;
+      line-height: 1.6;
+    }
+
+    /* Screen cards */
+    .screen-mini {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      padding: 8px 12px;
+      background: var(--bg);
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      margin-bottom: 6px;
+    }
+
+    .screen-mini .rank {
+      font-size: 16px;
+      font-weight: 700;
+      color: var(--accent2);
+      min-width: 24px;
+    }
+
+    .screen-mini .info {
+      flex: 1;
+    }
+
+    .screen-mini .name {
+      font-size: 12px;
+      font-weight: 600;
+    }
+
+    .screen-mini .detail {
+      font-size: 10px;
+      color: var(--text2);
+    }
+
+    .screen-mini .score-badge {
+      padding: 3px 10px;
+      border-radius: 10px;
+      font-size: 11px;
+      font-weight: 700;
+    }
+
+    .score-high {
+      background: rgba(0, 214, 143, 0.15);
+      color: var(--green);
+    }
+
+    .score-mid {
+      background: rgba(240, 147, 43, 0.15);
+      color: var(--orange);
+    }
+
+    .score-low {
+      background: rgba(255, 71, 87, 0.15);
+      color: var(--red);
+    }
+
+    /* Scrollbar */
+    ::-webkit-scrollbar {
+      width: 6px;
+    }
+
+    ::-webkit-scrollbar-track {
+      background: transparent;
+    }
+
+    ::-webkit-scrollbar-thumb {
+      background: var(--border);
+      border-radius: 3px;
+    }
+
+    ::-webkit-scrollbar-thumb:hover {
+      background: var(--text2);
+    }
+  </style>
+</head>
+
+<body>
+
+  <div class="header">
+    <h1>⚡ XIA Debug Dashboard</h1>
+    <span class="badge">3-Call Pipeline</span>
+  </div>
+
+  <div class="layout">
+    <!-- Left: Chat -->
+    <div class="chat-panel">
+      <div class="gateway-form">
+        <h3>Gateway Config</h3>
+        <div class="form-grid">
+          <input type="text" id="gw-location" placeholder="Location" value="Chennai, Madurai">
+          <input type="text" id="gw-budget" placeholder="Budget" value="100000">
+          <input type="date" id="gw-start" value="2026-04-01">
+          <input type="date" id="gw-end" value="2026-04-30">
+        </div>
+      </div>
+      <div class="session-bar" id="session-bar">
+        Session: <span id="session-id-display">new session</span>
+        <span id="loaded-badge" class="loaded-badge" style="display:none;">STUDIO</span>
+        <span id="live-badge" class="live-badge" style="display:none;" onclick="toggleMonitor()"
+          title="Click to pause/resume"><span class="pulse"></span> LIVE</span>
+        <a href="#" onclick="resetSession()" style="color:var(--red);text-decoration:none;">Reset</a>
+        <div class="load-session-row">
+          <input type="text" id="load-session-input" placeholder="Paste Studio session_id..."
+            onkeydown="if(event.key==='Enter')loadSession()">
+          <button class="load-btn" id="load-btn" onclick="loadSession()">Load</button>
+        </div>
+      </div>
+      <div class="chat-messages" id="chat-messages">
+        <div class="empty-state">
+          <div class="icon">🧠</div>
+          <h3>XIA Debug Mode</h3>
+          <p>Send a message to see all 3 LLM prompts,<br>raw responses, and pipeline data.</p>
+        </div>
+      </div>
+      <div class="chat-input-area">
+        <input type="text" id="chat-input" placeholder="Type a message..." autofocus
+          onkeydown="if(event.key==='Enter')sendMessage()">
+        <button id="send-btn" onclick="sendMessage()">Send</button>
+      </div>
+    </div>
+
+    <!-- Right: Debug Panel -->
+    <div class="debug-panel" id="debug-panel">
+      <div class="empty-state">
+        <div class="icon">🔍</div>
+        <h3>Pipeline Inspector</h3>
+        <p>Send a message to see the full 3-call pipeline:<br>
+          Call #1 (Understanding) → Discover → Call #2 (Ranking) → Call #3 (Reply)</p>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    let sessionId = null;
+    let isLoadedSession = false;
+    let monitorInterval = null;
+    let lastMessageCount = 0;
+    let monitorPaused = false;
+
+    function resetSession() {
+      stopMonitor();
+      sessionId = null;
+      isLoadedSession = false;
+      lastMessageCount = 0;
+      document.getElementById('session-id-display').textContent = 'new session';
+      document.getElementById('loaded-badge').style.display = 'none';
+      document.getElementById('live-badge').style.display = 'none';
+      document.getElementById('load-session-input').value = '';
+      document.getElementById('chat-messages').innerHTML = `
+    <div class="empty-state">
+      <div class="icon">🧠</div>
+      <h3>XIA Debug Mode</h3>
+      <p>Send a message to see all 3 LLM prompts,<br>raw responses, and pipeline data.</p>
+    </div>`;
+      document.getElementById('debug-panel').innerHTML = `
+    <div class="empty-state">
+      <div class="icon">🔍</div>
+      <h3>Pipeline Inspector</h3>
+      <p>Send a message to see the full 3-call pipeline.</p>
+    </div>`;
+    }
+
+    // ── Monitor (auto-poll) ────────────────────────────────────
+    function startMonitor() {
+      stopMonitor();
+      monitorPaused = false;
+      document.getElementById('live-badge').style.display = 'inline-flex';
+      document.getElementById('live-badge').classList.remove('paused');
+      monitorInterval = setInterval(pollSession, 3000);
+    }
+
+    function stopMonitor() {
+      if (monitorInterval) {
+        clearInterval(monitorInterval);
+        monitorInterval = null;
+      }
+      document.getElementById('live-badge').style.display = 'none';
+    }
+
+    function toggleMonitor() {
+      const badge = document.getElementById('live-badge');
+      if (monitorPaused) {
+        monitorPaused = false;
+        badge.classList.remove('paused');
+        badge.innerHTML = '<span class="pulse"></span> LIVE';
+        monitorInterval = setInterval(pollSession, 3000);
+      } else {
+        monitorPaused = true;
+        badge.classList.add('paused');
+        badge.innerHTML = '<span class="pulse"></span> PAUSED';
+        if (monitorInterval) {
+          clearInterval(monitorInterval);
+          monitorInterval = null;
+        }
+      }
+    }
+
+    async function pollSession() {
+      if (!sessionId || !isLoadedSession) return;
+      try {
+        const res = await fetch(`/xia/chat/${sessionId}/`);
+        if (!res.ok) return;
+        const data = await res.json();
+
+        const newCount = data.message_count || 0;
+        if (newCount <= lastMessageCount) return; // No new messages
+
+        lastMessageCount = newCount;
+
+        // Update chat history
+        const chatBox = document.getElementById('chat-messages');
+        chatBox.innerHTML = '';
+        (data.history || []).forEach(m => {
+          chatBox.innerHTML += `<div class="msg ${m.role}"><div class="bubble">${escHtml(m.content)}</div></div>`;
+        });
+        if (data.quick_replies && data.quick_replies.length) {
+          chatBox.innerHTML += '<div class="quick-replies-bar">' +
+            data.quick_replies.map(q => `<button class="qr-btn" onclick="sendQuickReply('${escAttr(q)}')">${escHtml(q)}</button>`).join('') +
+            '</div>';
+        }
+        chatBox.scrollTop = chatBox.scrollHeight;
+
+        // Update gateway fields
+        const gw = data.gateway || {};
+        if (gw.location && Array.isArray(gw.location)) document.getElementById('gw-location').value = gw.location.join(', ');
+        if (gw.start_date) document.getElementById('gw-start').value = gw.start_date;
+        if (gw.end_date) document.getElementById('gw-end').value = gw.end_date;
+        if (gw.budget_range) document.getElementById('gw-budget').value = gw.budget_range;
+
+        // Render debug data from last_turn_debug
+        const debug = data.last_turn_debug;
+        if (debug && debug.call1_meta) {
+          renderDebug(debug);
+        }
+      } catch (e) {
+        // Silent fail on poll errors
+      }
+    }
+
+    async function loadSession() {
+      const input = document.getElementById('load-session-input');
+      const sid = input.value.trim();
+      if (!sid) { input.focus(); return; }
+
+      const btn = document.getElementById('load-btn');
+      btn.disabled = true;
+      btn.textContent = '...';
+
+      try {
+        const res = await fetch(`/xia/chat/${sid}/`);
+        if (!res.ok) {
+          const err = await res.json();
+          alert(err.error || 'Session not found or expired');
+          btn.disabled = false;
+          btn.textContent = 'Load';
+          return;
+        }
+
+        const data = await res.json();
+        sessionId = data.session_id;
+        isLoadedSession = true;
+
+        // Update session display
+        document.getElementById('session-id-display').textContent = sessionId.slice(0, 8) + '...';
+        document.getElementById('loaded-badge').style.display = 'inline';
+
+        // Update gateway fields from loaded session
+        const gw = data.gateway || {};
+        if (gw.location && Array.isArray(gw.location)) {
+          document.getElementById('gw-location').value = gw.location.join(', ');
+        }
+        if (gw.start_date) document.getElementById('gw-start').value = gw.start_date;
+        if (gw.end_date) document.getElementById('gw-end').value = gw.end_date;
+        if (gw.budget_range) document.getElementById('gw-budget').value = gw.budget_range;
+
+        // Render chat history
+        const chatBox = document.getElementById('chat-messages');
+        chatBox.innerHTML = '';
+        const history = data.history || [];
+        lastMessageCount = history.length;
+        history.forEach(m => {
+          chatBox.innerHTML += `<div class="msg ${m.role}"><div class="bubble">${escHtml(m.content)}</div></div>`;
+        });
+
+        // Add quick replies if present
+        if (data.quick_replies && data.quick_replies.length) {
+          const qrHtml = '<div class="quick-replies-bar">' +
+            data.quick_replies.map(q => `<button class="qr-btn" onclick="sendQuickReply('${escAttr(q)}')">${escHtml(q)}</button>`).join('') +
+            '</div>';
+          chatBox.innerHTML += qrHtml;
+        }
+        chatBox.scrollTop = chatBox.scrollHeight;
+
+        // Render debug panel — show full pipeline if debug data exists
+        const dp = document.getElementById('debug-panel');
+        const debug = data.last_turn_debug;
+        const gw2 = data.gateway || {};
+
+        // Always show session info banner first
+        const bannerHtml = `
+        <div style="margin-bottom:16px;padding:12px 16px;background:rgba(0,206,201,0.08);border:1px solid var(--cyan);border-radius:10px;">
+          <div style="font-size:13px;font-weight:600;color:var(--cyan);margin-bottom:8px;">📡 Studio Session Loaded</div>
+          <div style="font-size:11px;color:var(--text2);line-height:1.6;">
+            Session: <span style="color:var(--text);font-family:'JetBrains Mono',monospace;">${sessionId}</span><br>
+            Campaign: <span style="color:var(--text);">${data.campaign_id || '—'}</span> · 
+            User: <span style="color:var(--text);">${data.user_id || '—'}</span><br>
+            Persona: <span style="color:var(--text);">${data.detected_persona || '—'}</span> · 
+            Intent: <span style="color:var(--text);">${data.intent || '—'}</span> · 
+            Discovery: <span style="color:var(--text);">${data.discovery_complete ? '✓ Complete' : 'In Progress'}</span>
+          </div>
+        </div>`;
+
+        if (debug && debug.call1_meta && Object.keys(debug.call1_meta).length > 0) {
+          // Full pipeline available — render it with the banner on top
+          renderDebug(debug);
+          dp.innerHTML = bannerHtml + dp.innerHTML;
+        } else {
+          // No debug data yet (fresh session) — show overview
+          dp.innerHTML = bannerHtml + `
+          <div style="font-size:11px;color:var(--text2);margin-top:16px;">Waiting for Studio to send a message... Pipeline details will appear here automatically.</div>`;
+        }
+
+      } catch (err) {
+        alert('Failed to load session: ' + err.message);
+      }
+
+      btn.disabled = false;
+      btn.textContent = 'Load';
+
+      // Start live monitoring
+      if (sessionId) startMonitor();
+    }
+
+    function sendQuickReply(text) {
+      document.getElementById('chat-input').value = text;
+      sendMessage();
+    }
+
+    async function sendMessage() {
+      const input = document.getElementById('chat-input');
+      const message = input.value.trim();
+      if (!message) return;
+      input.value = '';
+
+      const btn = document.getElementById('send-btn');
+      btn.disabled = true;
+
+      // Add user message to chat
+      const chatBox = document.getElementById('chat-messages');
+      if (chatBox.querySelector('.empty-state')) chatBox.innerHTML = '';
+      chatBox.innerHTML += `<div class="msg user"><div class="bubble">${escHtml(message)}</div></div>`;
+
+      // Add loading indicator
+      chatBox.innerHTML += `<div class="waiting-msg" id="loading"><div class="spinner"></div>Processing 3 calls...</div>`;
+      chatBox.scrollTop = chatBox.scrollHeight;
+
+      // Show pipeline loading in debug panel
+      const debugPanel = document.getElementById('debug-panel');
+      debugPanel.innerHTML = `
+    <div class="pipeline" id="pipeline">
+      <div class="pipe-step active" id="ps-c1">⏳ Call #1</div>
+      <span class="pipe-arrow">→</span>
+      <div class="pipe-step" id="ps-disc">Discover</div>
+      <span class="pipe-arrow">→</span>
+      <div class="pipe-step" id="ps-c2">Call #2</div>
+      <span class="pipe-arrow">→</span>
+      <div class="pipe-step" id="ps-c3">Call #3</div>
+    </div>
+    <div class="waiting-msg"><div class="spinner"></div>Running pipeline...</div>`;
+
+      // Build request
+      const payload = {
+        user_id: 'debug_user',
+        campaign_id: 'debug_campaign',
+        message: message,
+        debug: true,
+      };
+      if (sessionId) {
+        payload.session_id = sessionId;
+      } else {
+        payload.gateway = {
+          location: document.getElementById('gw-location').value.split(',').map(s => s.trim()).filter(Boolean),
+          start_date: document.getElementById('gw-start').value,
+          end_date: document.getElementById('gw-end').value,
+          budget_range: document.getElementById('gw-budget').value,
+        };
+      }
+
+      try {
+        const res = await fetch('/xia/chat/', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify(payload),
+        });
+        const data = await res.json();
+        sessionId = data.session_id;
+        document.getElementById('session-id-display').textContent = sessionId.slice(0, 8) + '...';
+
+        // Remove loading
+        const loader = document.getElementById('loading');
+        if (loader) loader.remove();
+
+        // Add assistant reply
+        let qrHtml = '';
+        if (data.quick_replies && data.quick_replies.length) {
+          qrHtml = '<div class="quick-replies-bar">' +
+            data.quick_replies.map(q => `<button class="qr-btn" onclick="sendQuickReply('${escAttr(q)}')">${escHtml(q)}</button>`).join('') +
+            '</div>';
+        }
+        chatBox.innerHTML += `
+      <div class="msg assistant">
+        <div class="bubble">${escHtml(data.reply || '')}</div>
+        ${qrHtml}
+        <div class="meta-line">
+          ${data.intent} · ${data.detected_persona} · ${data.total_screens_found} screens
+        </div>
+      </div>`;
+        chatBox.scrollTop = chatBox.scrollHeight;
+
+        // Render debug panel
+        renderDebug(data);
+
+        // ── Update Gateway Config from API response ────────────
+        // Gateway values come from the DB session (not localStorage).
+        // After gateway edits are applied, the API returns the updated values.
+        const gw = data.filters_applied && data.filters_applied.gateway;
+        if (gw) {
+          if (gw.location && Array.isArray(gw.location)) {
+            document.getElementById('gw-location').value = gw.location.join(', ');
+          }
+          if (gw.start_date) {
+            document.getElementById('gw-start').value = gw.start_date;
+          }
+          if (gw.end_date) {
+            document.getElementById('gw-end').value = gw.end_date;
+          }
+          if (gw.budget_range) {
+            document.getElementById('gw-budget').value = gw.budget_range;
+          }
+        }
+
+      } catch (err) {
+        const loader = document.getElementById('loading');
+        if (loader) loader.remove();
+        chatBox.innerHTML += `<div class="msg assistant"><div class="bubble" style="color:var(--red)">Error: ${err.message}</div></div>`;
+        debugPanel.innerHTML = `<div class="empty-state"><div class="icon">❌</div><h3>Request Failed</h3><p>${err.message}</p></div>`;
+      }
+
+      btn.disabled = false;
+      document.getElementById('chat-input').focus();
+    }
+
+    function renderDebug(d) {
+      const dp = document.getElementById('debug-panel');
+      const c1 = d.call1_meta || {};
+      const c2 = d.call2_meta || {};
+      const c3 = d.call3_meta || {};
+
+      const t1 = c1.processing_ms || 0;
+      const t2 = c2.processing_ms || 0;
+      const t3 = c3.processing_ms || 0;
+      const total = t1 + t2 + t3 || 1;
+
+      const hasC2 = t2 > 0;
+
+      // Pipeline status — Discover always runs now
+      const pipeHtml = `
+    <div class="pipeline">
+      <div class="pipe-step active">✓ Call #1 (${t1}ms)</div>
+      <span class="pipe-arrow">→</span>
+      <div class="pipe-step active">✓ Discover</div>
+      <span class="pipe-arrow">→</span>
+      <div class="pipe-step ${hasC2 ? 'active' : 'skipped'}">${hasC2 ? '✓' : '—'} Call #2 ${hasC2 ? '(' + t2 + 'ms)' : ''}</div>
+      <span class="pipe-arrow">→</span>
+      <div class="pipe-step active">✓ Call #3 (${t3}ms)</div>
+    </div>`;
+
+      // Timing bar
+      const timingHtml = `
+    <div class="timing-bar">
+      <div class="timing-seg c1" style="flex:${t1}">C1: ${t1}ms</div>
+      <div class="timing-seg disc" style="flex:50">Disc</div>
+      ${hasC2 ? `<div class="timing-seg c2" style="flex:${t2}">C2: ${t2}ms</div>` : ''}
+      <div class="timing-seg c3" style="flex:${t3}">C3: ${t3}ms</div>
+    </div>`;
+
+      // Extracted data grid
+      const dataHtml = `
+    <div class="data-grid" style="margin-bottom:16px;">
+      <div class="data-item"><div class="label">Intent</div><div class="value">${d.intent}</div></div>
+      <div class="data-item"><div class="label">Persona</div><div class="value">${d.detected_persona}</div></div>
+      <div class="data-item"><div class="label">Screens Found</div><div class="value">${d.total_screens_found} (${d.available_screens} avail)</div></div>
+      <div class="data-item"><div class="label">Filters</div><div class="value" style="font-size:11px">${JSON.stringify(d.filters_applied?.xia_filters || {})}</div></div>
+      <div class="data-item"><div class="label">Total Tokens</div><div class="value">${(c1.prompt_tokens || 0) + (c1.completion_tokens || 0) + (c2.prompt_tokens || 0) + (c2.completion_tokens || 0) + (c3.prompt_tokens || 0) + (c3.completion_tokens || 0)}</div></div>
+      <div class="data-item"><div class="label">Total Time</div><div class="value">${total}ms</div></div>
+    </div>`;
+
+      // Screens ranked
+      let screensHtml = '';
+      if (d.screens && d.screens.length) {
+        screensHtml = '<div style="margin-bottom:16px;">';
+        d.screens.forEach((s, i) => {
+          const score = s.relevance_score || 0;
+          const cls = score >= 70 ? 'score-high' : score >= 40 ? 'score-mid' : 'score-low';
+          screensHtml += `
+        <div class="screen-mini">
+          <div class="rank">#${i + 1}</div>
+          <div class="info">
+            <div class="name">${escHtml(s.screen_name || 'Screen')}</div>
+            <div class="detail">${s.environment || ''} · ${s.ai_profile?.area?.primaryType || ''} · ${s.is_available ? 'Available' : 'Unavailable'}</div>
+            <div class="detail" style="color:var(--text);margin-top:4px;line-height:1.5">${escHtml(s.ranking_reason || '')}</div>
+            ${s.score_rubric && s.score_rubric.area_match !== undefined ? `
+            <div class="detail" style="margin-top:4px;font-size:10px;opacity:0.6">
+              area:${s.score_rubric.area_match || 0} · audience:${s.score_rubric.audience_fit || 0} · quality:${s.score_rubric.screen_quality || 0} · context:${s.score_rubric.context_bonus || 0} · elig:${s.score_rubric.eligibility || 0}
+            </div>
+            ` : ''}
+          </div>
+          <div class="score-badge ${cls}">${score}</div>
+        </div>`;
+        });
+        screensHtml += '</div>';
+      }
+
+      // Discover card
+      let discoverCard = '';
+      const dm = d.discover_meta || {};
+      if (dm.ran !== undefined) {
+        const discId = 'cc-disc-' + Math.random().toString(36).slice(2, 8);
+        const discInput = dm.input || {};
+        const discResult = dm.raw_result || {};
+        const discScreens = (discResult.screens || []);
+        discoverCard = `
+    <div class="call-card">
+      <div class="call-card-header" onclick="toggleCard('${discId}')">
+        <div class="title">
+          <span class="dot" style="background:${dm.ran ? 'var(--cyan)' : 'var(--text2)'}"></span>
+          Discover API ${dm.ran ? '' : '(skipped)'}
+        </div>
+        <div class="badges">
+          <span class="stat">${discScreens.length} screens</span>
+          <span class="stat">${discInput.locations ? discInput.locations.join(', ') : '—'}</span>
+        </div>
+      </div>
+      <div class="call-card-body" id="${discId}">
+        <div class="tabs">
+          <div class="tab active" onclick="switchTab(this, '${discId}-input')">Input Params</div>
+          <div class="tab" onclick="switchTab(this, '${discId}-output')">Output Summary</div>
+          <div class="tab" onclick="switchTab(this, '${discId}-raw')">Raw Result</div>
+          <div class="tab" onclick="switchTab(this, '${discId}-screens')">Screens (${discScreens.length})</div>
+        </div>
+        <div class="tab-content active" id="${discId}-input">
+          <pre class="json-block">${escHtml(JSON.stringify(discInput, null, 2))}</pre>
+        </div>
+        <div class="tab-content" id="${discId}-output">
+          <div class="data-grid">
+            <div class="data-item"><div class="label">Total Found</div><div class="value">${discResult.total_screens_found || 0}</div></div>
+            <div class="data-item"><div class="label">Available</div><div class="value">${discResult.available_screens || 0}</div></div>
+            <div class="data-item"><div class="label">Unavailable</div><div class="value">${discResult.unavailable_screens || 0}</div></div>
+            <div class="data-item"><div class="label">Ran?</div><div class="value">${dm.ran ? '✓ Yes' : '— Skipped'}</div></div>
+          </div>
+        </div>
+        <div class="tab-content" id="${discId}-raw">
+          <pre class="json-block">${escHtml(JSON.stringify(discResult, null, 2))}</pre>
+        </div>
+        <div class="tab-content" id="${discId}-screens">
+          ${discScreens.length ? discScreens.map((s, i) => `
+            <div class="screen-mini">
+              <div class="rank">${i + 1}</div>
+              <div class="info">
+                <div class="name">${escHtml(s.screen_name || 'Screen ' + (s.screenid || ''))}</div>
+                <div class="detail">${s.environment || ''} · ${s.spec_city || ''} · ${s.is_available ? 'Available' : 'Unavailable'} · ₹${s.base_price_per_slot_inr || '?'}/slot</div>
+              </div>
+            </div>`).join('') : '<p style="padding:16px;color:var(--text2)">No screens returned</p>'}
+        </div>
+      </div>
+    </div>`;
+      }
+
+      // Call cards
+      const call1Card = buildCallCard('Call #1 — Understanding + Extraction', c1, 'blue', d);
+      const call2Card = hasC2 ? buildCallCard('Call #2 — Ranking + Reasoning', c2, 'orange', d) : '';
+      const call3Card = buildCallCard('Call #3 — Response Generation', c3, 'accent', d);
+
+      dp.innerHTML = pipeHtml + timingHtml + dataHtml + call1Card + discoverCard + call2Card + screensHtml + call3Card;
+    }
+
+    function buildCallCard(title, meta, color, data) {
+      const id = 'cc-' + Math.random().toString(36).slice(2, 8);
+      const dotColor = meta.error ? 'var(--red)' : 'var(--green)';
+
+      let promptText = meta.system_prompt || '(not captured — send with debug: true)';
+      let rawResp = meta.raw_response || '(not captured)';
+      let messagesText = '';
+      if (meta.messages_sent) {
+        messagesText = meta.messages_sent.map(m => `[${m.role}]\n${m.content}`).join('\n\n---\n\n');
+      }
+
+      return `
+    <div class="call-card">
+      <div class="call-card-header" onclick="toggleCard('${id}')">
+        <div class="title">
+          <span class="dot" style="background:${dotColor}"></span>
+          ${title}
+        </div>
+        <div class="badges">
+          <span class="stat">${meta.processing_ms || 0}ms</span>
+          <span class="stat">${(meta.prompt_tokens || 0) + (meta.completion_tokens || 0)} tok</span>
+          <span class="stat">${meta.model || '?'}</span>
+        </div>
+      </div>
+      <div class="call-card-body" id="${id}">
+        <div class="tabs">
+          <div class="tab active" onclick="switchTab(this, '${id}-prompt')">System Prompt</div>
+          <div class="tab" onclick="switchTab(this, '${id}-messages')">Messages Sent</div>
+          <div class="tab" onclick="switchTab(this, '${id}-raw')">Raw LLM Response</div>
+          <div class="tab" onclick="switchTab(this, '${id}-parsed')">Parsed Output</div>
+        </div>
+        <div class="tab-content active" id="${id}-prompt">
+          <pre class="prompt-block">${escHtml(promptText)}</pre>
+        </div>
+        <div class="tab-content" id="${id}-messages">
+          <pre class="prompt-block">${escHtml(messagesText || '(no messages)')}</pre>
+        </div>
+        <div class="tab-content" id="${id}-raw">
+          <pre class="json-block">${escHtml(rawResp)}</pre>
+        </div>
+        <div class="tab-content" id="${id}-parsed">
+          <pre class="json-block">${escHtml(JSON.stringify(stripMeta(meta), null, 2))}</pre>
+        </div>
+      </div>
+    </div>`;
+    }
+
+    function stripMeta(meta) {
+      const copy = { ...meta };
+      delete copy.system_prompt;
+      delete copy.messages_sent;
+      delete copy.raw_response;
+      return copy;
+    }
+
+    function toggleCard(id) {
+      document.getElementById(id).classList.toggle('open');
+    }
+
+    function switchTab(el, contentId) {
+      const tabs = el.parentElement;
+      const body = tabs.parentElement;
+      tabs.querySelectorAll('.tab').forEach(t => t.classList.remove('active'));
+      body.querySelectorAll('.tab-content').forEach(c => c.classList.remove('active'));
+      el.classList.add('active');
+      document.getElementById(contentId).classList.add('active');
+    }
+
+    function escHtml(s) {
+      if (!s) return '';
+      return String(s).replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;').replace(/"/g, '&quot;');
+    }
+    function escAttr(s) {
+      return String(s).replace(/'/g, "\\'").replace(/"/g, '&quot;');
+    }
+  </script>
+</body>
+
+</html>
